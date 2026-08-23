@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f3" />
+    <meta
+      name="description"
+      content="PrintMomentum is an independent discovery index for active printable t-shirt listings on Etsy."
+    />
+    <meta property="og:title" content="PrintMomentum — printable tees, ranked by momentum" />
+    <meta
+      property="og:description"
+      content="An independent discovery index that helps shoppers find active printable t-shirt listings gaining momentum."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/social-card.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>PrintMomentum — printable tees, ranked by momentum</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="header">
+        <a class="wordmark" href="/" aria-label="PrintMomentum home">PrintMomentum</a>
+        <p class="label tagline">Independent listing discovery</p>
+        <nav aria-label="Primary navigation">
+          <a class="label text-link" href="#how-it-works">Method</a>
+          <a class="label text-link" href="#about">About</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy reveal">
+            <p class="label eyebrow">Printable tees / independent index</p>
+            <h1 id="hero-title">Find the tees that<br /><i>just started moving.</i></h1>
+          </div>
+          <div class="hero-aside reveal delay-1">
+            <p class="lede">
+              PrintMomentum helps shoppers discover active printable t-shirt listings on Etsy through
+              transparent, independently calculated momentum signals.
+            </p>
+            <a class="button" href="#how-it-works">
+              See how it works
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </section>
+
+        <div class="rule" aria-hidden="true"></div>
+
+        <section class="index-preview" aria-label="Example ranking">
+          <div class="index-head">
+            <p class="label">Example index</p>
+            <p class="label">Illustrative data</p>
+          </div>
+
+          <article class="index-row reveal delay-1">
+            <span class="rank label numeric">01</span>
+            <div class="mark mark-circle" aria-hidden="true"></div>
+            <div class="item-copy">
+              <h2>New arrivals with early traction</h2>
+              <p class="label">Public active listings</p>
+            </div>
+            <div class="metric">
+              <span class="label">Signal</span>
+              <strong class="numeric">2.31</strong>
+            </div>
+          </article>
+
+          <article class="index-row reveal delay-2">
+            <span class="rank label numeric">02</span>
+            <div class="mark mark-lines" aria-hidden="true"></div>
+            <div class="item-copy">
+              <h2>Independent discovery, not a marketplace</h2>
+              <p class="label">Clicks lead to Etsy</p>
+            </div>
+            <div class="metric">
+              <span class="label">Signal</span>
+              <strong class="numeric">1.94</strong>
+            </div>
+          </article>
+
+          <article class="index-row reveal delay-3">
+            <span class="rank label numeric">03</span>
+            <div class="mark mark-triangle" aria-hidden="true"></div>
+            <div class="item-copy">
+              <h2>Freshness before long-term popularity</h2>
+              <p class="label">Time-aware ranking</p>
+            </div>
+            <div class="metric">
+              <span class="label">Signal</span>
+              <strong class="numeric">1.51</strong>
+            </div>
+          </article>
+        </section>
+
+        <section class="method" id="how-it-works" aria-labelledby="method-title">
+          <div class="section-intro reveal">
+            <p class="label">01 / Method</p>
+            <h2 id="method-title">A smaller, clearer way to discover.</h2>
+          </div>
+          <ol class="steps">
+            <li class="reveal">
+              <span class="step-number label numeric">01</span>
+              <h3>Read public metadata</h3>
+              <p>
+                PrintMomentum intends to use Etsy's official Open API to read limited metadata for
+                active listings: title, image, price, shop name, URL, and public engagement fields.
+              </p>
+            </li>
+            <li class="reveal delay-1">
+              <span class="step-number label numeric">02</span>
+              <h3>Calculate a signal</h3>
+              <p>
+                We compare recency and movement over time to surface listings that may be gaining
+                attention. The signal is our own interpretation, not an Etsy endorsement.
+              </p>
+            </li>
+            <li class="reveal delay-2">
+              <span class="step-number label numeric">03</span>
+              <h3>Send shoppers to Etsy</h3>
+              <p>
+                PrintMomentum does not process orders. Listing links take visitors to Etsy, where
+                availability, pricing, checkout, and seller policies remain authoritative.
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="principles" id="about" aria-labelledby="principles-title">
+          <div class="section-intro reveal">
+            <p class="label">02 / Data principles</p>
+            <h2 id="principles-title">Read-only by design.</h2>
+          </div>
+          <div class="principle-grid">
+            <div class="principle reveal">
+              <span class="label">No writes</span>
+              <p>We do not upload, edit, or manage Etsy listings.</p>
+            </div>
+            <div class="principle reveal delay-1">
+              <span class="label">No private commerce data</span>
+              <p>We do not request sales, order, payment, buyer, or email data.</p>
+            </div>
+            <div class="principle reveal delay-2">
+              <span class="label">No credential sharing</span>
+              <p>API credentials stay server-side and are never requested from visitors.</p>
+            </div>
+            <div class="principle reveal delay-3">
+              <span class="label">Limited retention</span>
+              <p>Displayed listing information is refreshed or removed according to Etsy's terms.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="status reveal" aria-labelledby="status-title">
+          <p class="label">Current status</p>
+          <h2 id="status-title">Private prototype.<br /><i>API access pending.</i></h2>
+          <p>
+            PrintMomentum is not yet open to the public. This page documents the intended product and
+            data use while Etsy reviews API access.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p class="label">© <span id="year"></span> PrintMomentum</p>
+        <p class="disclaimer">
+          PrintMomentum is an independent application and is not affiliated with, endorsed by, or
+          sponsored by Etsy, Inc. Etsy is a trademark of Etsy, Inc.
+        </p>
+        <a class="label text-link" href="mailto:hello@printmomentum.com">Contact</a>
+      </footer>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

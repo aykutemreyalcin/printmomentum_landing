@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f6f3"/>
+  <path d="M64 82h1072" stroke="#111112"/>
+  <text x="64" y="62" fill="#111112" font-family="Arial, sans-serif" font-size="22" font-weight="600">PrintMomentum</text>
+  <text x="64" y="292" fill="#111112" font-family="Georgia, serif" font-size="108">Printable tees,</text>
+  <text x="64" y="410" fill="#b3401f" font-family="Georgia, serif" font-size="108" font-style="italic">ranked by momentum.</text>
+  <text x="64" y="545" fill="#77746c" font-family="monospace" font-size="20" letter-spacing="3">INDEPENDENT LISTING DISCOVERY</text>
+  <circle cx="1090" cy="535" r="28" fill="#b3401f"/>
+</svg>
