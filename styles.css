@@ -64,16 +64,28 @@ h3 {
 
 .header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--ink);
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.03em;
+}
+
+.brand-logo {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  object-fit: contain;
+  background: #fff;
 }
 
 .tagline {
