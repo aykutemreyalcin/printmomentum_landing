@@ -41,7 +41,8 @@ function applyTheme(theme) {
   const meta = document.querySelector('meta[name="theme-color"]')
   if (meta) meta.content = theme === 'dark' ? '#0f1419' : '#f5f7fa'
   const toggle = document.getElementById('theme-toggle')
-  if (toggle) toggle.textContent = theme === 'dark' ? t('theme.light', currentLang) : t('theme.dark', currentLang)
+  const label = toggle?.querySelector('[data-i18n]') ?? toggle
+  if (label) label.textContent = theme === 'dark' ? t('theme.light', currentLang) : t('theme.dark', currentLang)
 }
 
 let currentLang = detectLang()
