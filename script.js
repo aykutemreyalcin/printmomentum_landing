@@ -222,30 +222,6 @@ function initCursorFx() {
   tick()
 }
 
-function animateCount(node, target) {
-  if (reducedMotion || !target) {
-    return String(target)
-  }
-  const duration = 900
-  const start = performance.now()
-  const from = 0
-  const formatter = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US')
-
-  return new Promise((resolve) => {
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1)
-      const eased = 1 - (1 - progress) ** 3
-      const value = Math.round(from + (target - from) * eased)
-      node.dataset.count = String(value)
-      resolve(formatter.format(value))
-      if (progress < 1) {
-        requestAnimationFrame(step)
-      }
-    }
-    requestAnimationFrame(step)
-  })
-}
-
 async function loadHealth() {
   const statsLine = document.getElementById('stats-line')
   if (!statsLine) return
