@@ -1,7 +1,6 @@
 # PrintMomentum landing page
 
-Static, single-page website for PrintMomentum. It uses the same Editorial Grid visual system as the
-product frontend and has no build step or runtime dependencies.
+Static marketing site for [printmomentum.com](https://printmomentum.com). No build step.
 
 ## Local preview
 
@@ -9,14 +8,17 @@ product frontend and has no build step or runtime dependencies.
 python3 -m http.server 4173
 ```
 
-Then open `http://localhost:4173`.
+Open `http://localhost:4173`.
 
-## Deploy to Vercel
+## Deploy
 
-1. Import this GitHub repository into Vercel.
-2. Select **Other** as the framework preset.
-3. Leave the build command empty.
-4. Keep the output directory as the repository root (`.`).
-5. Deploy.
+Pushes to `main` sync this folder to S3 and EC2 via GitHub Actions (`.github/workflows/ci.yml`).
 
-No environment variables are required.
+Production path on the box: `/opt/printmomentum/landing` (served by Caddy on `printmomentum.com`).
+
+## Files
+
+- `index.html` — main landing (EN/TR, dark mode, live health stats)
+- `privacy.html`, `terms.html` — legal pages
+- `i18n.js` — translations
+- `og-image.png` — social sharing image (1200×630)
