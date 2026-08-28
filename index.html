@@ -27,7 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css?v=20260828-3" />
+    <link rel="stylesheet" href="/styles.css?v=20260828-4" />
     <title data-i18n="meta.title">PrintMomentum</title>
     <script type="application/ld+json">
       {
@@ -55,8 +55,7 @@
           </a>
           <button type="button" class="nav-toggle label" aria-expanded="false" aria-controls="site-nav" data-i18n="nav.menu">Menu</button>
           <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-            <a class="label nav-link" href="#features" data-i18n="nav.features">Features</a>
-            <a class="label nav-link" href="#method" data-i18n="nav.method">Method</a>
+            <a class="label nav-link" href="#preview" data-i18n="nav.preview">Preview</a>
             <a class="label nav-link" href="#faq" data-i18n="nav.faq">FAQ</a>
             <a class="label nav-link" href="#access" data-i18n="nav.access">Request access</a>
             <a class="button-secondary" href="https://app.printmomentum.com" data-i18n="nav.openApp">Open app</a>
@@ -76,14 +75,13 @@
       <main>
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy reveal">
-            <p class="label eyebrow" data-i18n="hero.eyebrow">For Etsy print-on-demand sellers</p>
+            <p class="label eyebrow" data-i18n="hero.eyebrow">For Etsy POD sellers</p>
             <h1 id="hero-title">
               <span data-i18n="hero.title">Find tees climbing</span><br />
               <em data-i18n="hero.titleEm">before they peak.</em>
             </h1>
-          </div>
-          <div class="hero-aside reveal delay-1">
-            <p class="lede" data-i18n="hero.lede">PrintMomentum indexes printable t-shirt listings from Etsy.</p>
+            <p class="lede hero-lede" data-i18n="hero.lede">A print-tee index ranked by momentum, not shelf age.</p>
+            <p class="label stats-inline" id="stats-line" data-i18n="stats.loading">Loading index stats…</p>
             <div class="hero-actions">
               <a class="button" href="#access" data-i18n="hero.ctaPrimary">Request beta access</a>
               <a class="button-secondary" href="https://app.printmomentum.com" data-i18n="hero.ctaSecondary">Open app</a>
@@ -91,29 +89,8 @@
           </div>
         </section>
 
-        <section class="stats reveal delay-1" aria-label="Live index stats">
-          <article class="stat-card">
-            <p class="label" data-i18n="stats.indexed">Indexed listings</p>
-            <p class="stat-value numeric" id="stat-indexed">—</p>
-          </article>
-          <article class="stat-card">
-            <p class="label" data-i18n="stats.cadence">Ingest cadence</p>
-            <p class="stat-value stat-value-sm" data-i18n="stats.cadenceValue">6× daily · Europe/Istanbul</p>
-          </article>
-          <article class="stat-card">
-            <p class="label" data-i18n="stats.status">Index status</p>
-            <p class="stat-value stat-value-sm" id="stat-status" data-i18n="stats.loading">Loading…</p>
-          </article>
-        </section>
-
-        <section class="preview reveal delay-2" id="features" aria-labelledby="preview-title">
-          <div class="section-head">
-            <div>
-              <p class="label" data-i18n="preview.label">Product preview</p>
-              <h2 id="preview-title" class="section-title" data-i18n="features.title">Built for research, not browsing.</h2>
-            </div>
-            <p class="label muted" data-i18n="preview.note">Illustrative UI — same layout as the app</p>
-          </div>
+        <section class="preview reveal delay-1" id="preview" aria-labelledby="preview-title">
+          <h2 id="preview-title" class="section-title" data-i18n="preview.title">Same feed as the app</h2>
           <div class="app-mock" role="img" aria-label="PrintMomentum feed preview">
             <div class="mock-toolbar">
               <div class="mock-segmented" aria-hidden="true">
@@ -133,7 +110,7 @@
               <div class="mock-row">
                 <span class="numeric">01</span>
                 <div>
-                  <strong data-i18n="preview.row1.title">Comfort Colors® Dancing Skeleton Shirt…</strong>
+                  <strong data-i18n="preview.row1.title">Comfort Colors Dancing Skeleton Shirt</strong>
                   <span class="label" data-i18n="preview.row1.shop">UpTopNorth</span>
                 </div>
                 <span class="numeric mock-score">0.96</span>
@@ -142,150 +119,57 @@
               <div class="mock-row">
                 <span class="numeric">02</span>
                 <div>
-                  <strong data-i18n="preview.row2.title">Bald Eagle With American Flag T-Shirt…</strong>
+                  <strong data-i18n="preview.row2.title">Bald Eagle American Flag T-Shirt</strong>
                   <span class="label" data-i18n="preview.row2.shop">Etsy shop 66857897</span>
                 </div>
                 <span class="numeric mock-score">4.00</span>
                 <span class="badge badge-climb" data-i18n="preview.climbing">Climbing</span>
               </div>
-              <div class="mock-row">
-                <span class="numeric">03</span>
-                <div>
-                  <strong data-i18n="preview.row3.title">Custom First Grade Back to School Shirt…</strong>
-                  <span class="label" data-i18n="preview.row3.shop">CuTeesCustomShirts</span>
-                </div>
-                <span class="numeric mock-score">0.95</span>
-                <span class="badge badge-etsy" data-i18n="preview.bestseller">Bestseller</span>
-              </div>
             </div>
           </div>
-        </section>
-
-        <section class="feature-grid reveal">
-          <article class="feature-card">
-            <h3 data-i18n="features.momentum.title">Three momentum windows</h3>
-            <p data-i18n="features.momentum.body">Daily catches fresh spikes.</p>
-          </article>
-          <article class="feature-card">
-            <h3 data-i18n="features.bestseller.title">Etsy bestseller verification</h3>
-            <p data-i18n="features.bestseller.body">Verified via public listing data.</p>
-          </article>
-          <article class="feature-card">
-            <h3 data-i18n="features.feed.title">Layered feed &amp; charts</h3>
-            <p data-i18n="features.feed.body">Dense table, expand row, snapshot charts.</p>
-          </article>
-          <article class="feature-card">
-            <h3 data-i18n="features.filters.title">Research filters</h3>
-            <p data-i18n="features.filters.body">Presets for reviews, climbing, bestsellers.</p>
-          </article>
-          <article class="feature-card">
-            <h3 data-i18n="features.export.title">CSV export</h3>
-            <p data-i18n="features.export.body">Export all or selected rows.</p>
-          </article>
-          <article class="feature-card">
-            <h3 data-i18n="features.shops.title">Shop expansion</h3>
-            <p data-i18n="features.shops.body">Widen coverage from surfaced shops.</p>
-          </article>
-        </section>
-
-        <section class="audience reveal" aria-labelledby="audience-title">
-          <p class="label accent" data-i18n="audience.label">02 / Who it is for</p>
-          <h2 id="audience-title" class="section-title" data-i18n="audience.title">If you sell printable tees, this is your radar.</h2>
-          <div class="audience-grid">
-            <article><h3 data-i18n="audience.pod.title">POD sellers</h3><p data-i18n="audience.pod.body">Spot niches early.</p></article>
-            <article><h3 data-i18n="audience.research.title">Trend researchers</h3><p data-i18n="audience.research.body">Compare climb speed.</p></article>
-            <article><h3 data-i18n="audience.ops.title">Small teams</h3><p data-i18n="audience.ops.body">One invited feed for everyone.</p></article>
-          </div>
-        </section>
-
-        <section class="method-block reveal" id="method" aria-labelledby="method-title">
-          <div class="section-intro">
-            <p class="label accent" data-i18n="method.label">03 / Method</p>
-            <h2 id="method-title" class="section-title" data-i18n="method.title">Read-only, transparent, Etsy-first.</h2>
-          </div>
-          <ol class="steps">
-            <li>
-              <span class="step-number label numeric">01</span>
-              <div>
-                <h3 data-i18n="method.step1.title">Ingest public listings</h3>
-                <p data-i18n="method.step1.body">Etsy Open API plus scheduled crawls.</p>
-              </div>
-            </li>
-            <li>
-              <span class="step-number label numeric">02</span>
-              <div>
-                <h3 data-i18n="method.step2.title">Score momentum</h3>
-                <p data-i18n="method.step2.body">Daily, weekly, and monthly windows.</p>
-              </div>
-            </li>
-            <li>
-              <span class="step-number label numeric">03</span>
-              <div>
-                <h3 data-i18n="method.step3.title">Link out to Etsy</h3>
-                <p data-i18n="method.step3.body">Etsy remains the source of truth.</p>
-              </div>
-            </li>
-          </ol>
-        </section>
-
-        <section class="principles reveal" aria-labelledby="principles-title">
-          <div class="section-intro">
-            <p class="label accent" data-i18n="principles.label">Data principles</p>
-            <h2 id="principles-title" class="section-title" data-i18n="principles.title">Read-only by design.</h2>
-          </div>
-          <div class="principle-grid">
-            <article><span class="label accent" data-i18n="principles.noWrites">No writes</span><p data-i18n="principles.noWrites.body">No listing edits.</p></article>
-            <article><span class="label accent" data-i18n="principles.noPrivate">No private commerce data</span><p data-i18n="principles.noPrivate.body">No orders or payments.</p></article>
-            <article><span class="label accent" data-i18n="principles.serverSide">Server-side credentials</span><p data-i18n="principles.serverSide.body">Keys stay on servers.</p></article>
-            <article><span class="label accent" data-i18n="principles.retention">Limited retention</span><p data-i18n="principles.retention.body">Refreshed per Etsy terms.</p></article>
-          </div>
+          <ul class="feature-list reveal delay-2">
+            <li data-i18n="features.item1">Daily, weekly, and monthly momentum windows</li>
+            <li data-i18n="features.item2">Etsy bestseller badge on verified listings</li>
+            <li data-i18n="features.item3">Filters, row expand, charts, CSV export</li>
+            <li data-i18n="features.item4">Read-only index. Checkout stays on Etsy.</li>
+          </ul>
         </section>
 
         <section class="faq reveal" id="faq" aria-labelledby="faq-title">
-          <p class="label accent" data-i18n="faq.label">04 / FAQ</p>
-          <h2 id="faq-title" class="section-title" data-i18n="faq.title">Common questions.</h2>
+          <h2 id="faq-title" class="section-title" data-i18n="faq.title">FAQ</h2>
           <div class="faq-list">
-            <details><summary data-i18n="faq.q1">Is PrintMomentum a marketplace?</summary><p data-i18n="faq.a1">No.</p></details>
-            <details><summary data-i18n="faq.q2">Who can sign in today?</summary><p data-i18n="faq.a2">Private beta.</p></details>
-            <details><summary data-i18n="faq.q3">Does Etsy endorse these rankings?</summary><p data-i18n="faq.a3">No.</p></details>
-            <details><summary data-i18n="faq.q4">What listings are indexed?</summary><p data-i18n="faq.a4">Printable tees.</p></details>
-            <details><summary data-i18n="faq.q5">How often is data refreshed?</summary><p data-i18n="faq.a5">Six ingests per day.</p></details>
+            <details><summary data-i18n="faq.q1">What is PrintMomentum?</summary><p data-i18n="faq.a1">An independent Etsy print-tee research index.</p></details>
+            <details><summary data-i18n="faq.q2">Who can sign in?</summary><p data-i18n="faq.a2">Private beta. Request access below.</p></details>
+            <details><summary data-i18n="faq.q3">How often is data refreshed?</summary><p data-i18n="faq.a3">Six ingests per day.</p></details>
           </div>
         </section>
 
         <section class="access reveal" id="access" aria-labelledby="access-title">
-          <p class="label accent" data-i18n="access.label">Beta access</p>
-          <h2 id="access-title" class="section-title" data-i18n="access.title">Request an invite.</h2>
-          <p class="access-copy" data-i18n="access.body">Tell us how you use Etsy POD research.</p>
+          <h2 id="access-title" class="section-title" data-i18n="access.title">Request access</h2>
+          <p class="access-copy" data-i18n="access.body">Short note about how you sell on Etsy is enough.</p>
           <form class="access-form" id="access-form">
             <label><span class="label" data-i18n="access.name">Name</span><input name="name" required autocomplete="name" /></label>
             <label><span class="label" data-i18n="access.email">Email</span><input name="email" type="email" required autocomplete="email" /></label>
-            <label class="access-message"><span class="label" data-i18n="access.message">How would you use PrintMomentum?</span><textarea name="message" rows="4" required></textarea></label>
+            <label class="access-message"><span class="label" data-i18n="access.message">Message</span><textarea name="message" rows="3" required></textarea></label>
             <button type="submit" class="button" data-i18n="access.submit">Send request</button>
-            <p class="form-note label" data-i18n="access.note">Opens your email client.</p>
+            <p class="form-note label" data-i18n="access.note">Opens your email app.</p>
             <p class="form-success label" id="access-success" hidden data-i18n="access.success">Email app should open.</p>
           </form>
-        </section>
-
-        <section class="status reveal" aria-labelledby="status-title">
-          <p class="label" data-i18n="status.label">Current status</p>
-          <h2 id="status-title"><span data-i18n="status.title">Private beta.</span> <em data-i18n="status.em">Index is live for invited accounts.</em></h2>
-          <p data-i18n="status.body">Existing users sign in at app.printmomentum.com.</p>
         </section>
       </main>
 
       <footer class="site-footer">
         <p class="label">© <span id="year"></span> PrintMomentum</p>
-        <p class="disclaimer" data-i18n="footer.disclaimer">Independent application — not affiliated with Etsy.</p>
+        <p class="disclaimer" data-i18n="footer.disclaimer">Not affiliated with Etsy, Inc.</p>
         <nav class="footer-nav" aria-label="Footer">
-          <a class="label text-link" href="mailto:hello@printmomentum.com" data-i18n="footer.contact">Contact</a>
+          <a class="label text-link" href="mailto:aykutemyeyalcin@gmail.com" data-i18n="footer.contact">Contact</a>
           <a class="label text-link" href="/privacy.html" data-i18n="footer.privacy">Privacy</a>
           <a class="label text-link" href="/terms.html" data-i18n="footer.terms">Terms</a>
         </nav>
       </footer>
     </div>
 
-    <script src="/i18n.js?v=20260828-3"></script>
-    <script src="/script.js?v=20260828-3"></script>
+    <script src="/i18n.js?v=20260828-4"></script>
+    <script src="/script.js?v=20260828-4"></script>
   </body>
 </html>

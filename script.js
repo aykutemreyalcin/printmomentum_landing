@@ -1,7 +1,7 @@
 const STORAGE_LANG = 'printmomentum-landing-lang'
 const STORAGE_THEME = 'printmomentum-landing-theme'
 const HEALTH_URL = 'https://app.printmomentum.com/api/v1/health'
-const ACCESS_EMAIL = 'hello@printmomentum.com'
+const ACCESS_EMAIL = 'aykutemyeyalcin@gmail.com'
 
 function detectLang() {
   const stored = localStorage.getItem(STORAGE_LANG)
@@ -15,8 +15,12 @@ function detectTheme() {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
-function t(key, locale) {
-  return window.PM_I18N[locale]?.[key] ?? window.PM_I18N.en[key] ?? key
+function t(key, locale, vars = {}) {
+  let text = window.PM_I18N[locale]?.[key] ?? window.PM_I18N.en[key] ?? key
+  Object.entries(vars).forEach(([name, value]) => {
+    text = text.replace(`{${name}}`, value)
+  })
+  return text
 }
 
 function applyI18n(locale) {
@@ -58,6 +62,7 @@ document.querySelectorAll('[data-lang]').forEach((button) => {
     localStorage.setItem(STORAGE_LANG, currentLang)
     applyI18n(currentLang)
     applyTheme(currentTheme)
+    loadHealth()
   })
 })
 
@@ -100,25 +105,23 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 }
 
 async function loadHealth() {
-  const indexedNode = document.getElementById('stat-indexed')
-  const statusNode = document.getElementById('stat-status')
-  if (!indexedNode || !statusNode) return
+  const statsLine = document.getElementById('stats-line')
+  if (!statsLine) return
   try {
     const response = await fetch(HEALTH_URL)
     if (!response.ok) throw new Error('health failed')
     const health = await response.json()
-    indexedNode.textContent = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US').format(
+    const count = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US').format(
       health.indexedListings ?? 0,
     )
-    if (health.status === 'ok' && health.lastOutcome !== 'error') {
-      statusNode.textContent = t('stats.live', currentLang)
-      statusNode.classList.add('is-live')
-    } else {
-      statusNode.textContent = health.lastOutcome || t('stats.error', currentLang)
-    }
+    const status =
+      health.status === 'ok' && health.lastOutcome !== 'error'
+        ? t('stats.live', currentLang)
+        : t('stats.error', currentLang)
+    statsLine.textContent = t('stats.line', currentLang, { count, status })
+    if (status === t('stats.live', currentLang)) statsLine.classList.add('is-live')
   } catch {
-    indexedNode.textContent = '—'
-    statusNode.textContent = t('stats.error', currentLang)
+    statsLine.textContent = t('stats.error', currentLang)
   }
 }
 

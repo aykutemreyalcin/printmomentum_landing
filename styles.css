@@ -136,8 +136,8 @@ h3 {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -273,36 +273,26 @@ h3 {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 40px);
-  align-items: start;
-  padding: clamp(48px, 8vh, 96px) 0 clamp(40px, 6vh, 64px);
+  padding: clamp(40px, 7vh, 72px) 0 clamp(32px, 5vh, 48px);
 }
 
 .hero-copy {
-  min-width: 0;
-}
-
-.hero-aside {
-  min-width: 0;
-  max-width: 520px;
+  max-width: 640px;
 }
 
 .eyebrow {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 14ch;
   font-family: var(--serif);
-  font-size: clamp(34px, 4.8vw, 62px);
+  font-size: clamp(34px, 4.8vw, 58px);
   font-weight: 400;
   line-height: 1.1;
 }
 
-h1 em,
-.status h2 em {
+h1 em {
   color: inherit;
   font-style: normal;
 }
@@ -310,15 +300,68 @@ h1 em,
 .lede {
   max-width: 520px;
   color: var(--muted);
-  font-size: clamp(17px, 2vw, 22px);
-  line-height: 1.35;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.4;
+}
+
+.hero-lede {
+  margin-top: 20px;
+}
+
+.stats-inline {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.stats-inline.is-live {
+  color: var(--success);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 24px;
+}
+
+.feature-list {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 560px;
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.preview,
+.faq,
+.access {
+  padding: clamp(40px, 6vw, 64px) 0;
+  border-top: 1px solid var(--hair);
+}
+
+.section-title {
+  max-width: 640px;
+  margin-bottom: 20px;
+  font-size: clamp(24px, 3.5vw, 36px);
 }
 
 .stats {
