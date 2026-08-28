@@ -181,7 +181,8 @@ function initTilt() {
 function initCursorFx() {
   if (reducedMotion || !finePointer) return
   const root = document.documentElement
-  const dot = document.querySelector('.cursor-dot')
+  const ring = document.querySelector('.cursor-ring')
+  if (!ring) return
   root.classList.add('has-cursor-fx')
 
   let targetX = window.innerWidth / 2
@@ -206,17 +207,16 @@ function initCursorFx() {
     'mouseover',
     (event) => {
       if (!(event.target instanceof Element)) return
-      dot?.classList.toggle('is-hover', Boolean(event.target.closest(interactiveSelector)))
+      ring.classList.toggle('is-hover', Boolean(event.target.closest(interactiveSelector)))
     },
     { passive: true },
   )
 
   const tick = () => {
-    currentX += (targetX - currentX) * 0.16
-    currentY += (targetY - currentY) * 0.16
-    if (dot) {
-      dot.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`
-    }
+    currentX += (targetX - currentX) * 0.14
+    currentY += (targetY - currentY) * 0.14
+    ring.style.setProperty('--ring-x', `${currentX}px`)
+    ring.style.setProperty('--ring-y', `${currentY}px`)
     requestAnimationFrame(tick)
   }
   tick()

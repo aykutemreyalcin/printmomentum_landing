@@ -59,19 +59,6 @@ body {
   overflow-x: clip;
 }
 
-html.has-cursor-fx body {
-  cursor: none;
-}
-
-html.has-cursor-fx a,
-html.has-cursor-fx button,
-html.has-cursor-fx summary,
-html.has-cursor-fx input,
-html.has-cursor-fx textarea,
-html.has-cursor-fx .mock-seg {
-  cursor: none;
-}
-
 .cursor-glow {
   position: fixed;
   inset: 0;
@@ -91,28 +78,35 @@ html.has-cursor-fx .cursor-glow {
   opacity: 1;
 }
 
-.cursor-dot {
+.cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid color-mix(in srgb, var(--ink) 45%, transparent);
   border-radius: 50%;
-  background: var(--ink);
+  background: transparent;
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
-  transition: opacity 200ms var(--ease), transform 120ms var(--ease);
+  transform: translate3d(var(--ring-x, -100px), var(--ring-y, -100px), 0) translate(-50%, -50%);
+  transition:
+    opacity 200ms var(--ease),
+    width 180ms var(--ease),
+    height 180ms var(--ease),
+    border-color 180ms var(--ease);
+  will-change: transform, width, height;
 }
 
-html.has-cursor-fx .cursor-dot {
-  opacity: 0.75;
+html.has-cursor-fx .cursor-ring {
+  opacity: 1;
 }
 
-html.has-cursor-fx .cursor-dot.is-hover {
-  transform: scale(2.4);
-  opacity: 0.35;
+html.has-cursor-fx .cursor-ring.is-hover {
+  width: 40px;
+  height: 40px;
+  border-color: color-mix(in srgb, var(--primary) 70%, var(--ink));
 }
 
 .shell {
@@ -1047,7 +1041,7 @@ h1 em {
   }
 
   .cursor-glow,
-  .cursor-dot {
+  .cursor-ring {
     display: none;
   }
 
