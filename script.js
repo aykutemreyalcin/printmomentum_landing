@@ -51,6 +51,8 @@ function applyTheme(theme) {
 
 let currentLang = detectLang()
 let currentTheme = detectTheme()
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const finePointer = window.matchMedia('(pointer: fine)').matches
 
 document.getElementById('year').textContent = String(new Date().getFullYear())
 applyI18n(currentLang)
@@ -86,45 +88,215 @@ siteNav?.querySelectorAll('a').forEach((link) => {
   })
 })
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-const revealNodes = document.querySelectorAll('.reveal')
-if (reducedMotion || !('IntersectionObserver' in window)) {
-  revealNodes.forEach((node) => node.classList.add('is-visible'))
-} else {
-  const observer = new IntersectionObserver(
+function initHeroLines() {
+  document.querySelectorAll('.hero-line').forEach((line) => {
+    line.classList.add('is-in')
+  })
+}
+
+function initReveal() {
+  const revealNodes = document.querySelectorAll('.reveal')
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    revealNodes.forEach((node) => node.classList.add('is-visible'))
+    document.querySelectorAll('.stagger-item').forEach((node) => node.classList.add('is-visible'))
+    return
+  }
+
+  const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return
         entry.target.classList.add('is-visible')
-        observer.unobserve(entry.target)
+        entry.target.querySelectorAll('.stagger-item').forEach((item, index) => {
+          window.setTimeout(() => item.classList.add('is-visible'), index * 70)
+        })
+        revealObserver.unobserve(entry.target)
       })
     },
     { rootMargin: '0px 0px -8% 0px' },
   )
-  revealNodes.forEach((node) => observer.observe(node))
+  revealNodes.forEach((node) => revealObserver.observe(node))
+}
+
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header')
+  if (!header) return
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 8)
+  }
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+}
+
+function initNavSpy() {
+  const links = [...document.querySelectorAll('.site-nav .nav-link[href^="#"]')]
+  if (!links.length) return
+  const sections = links
+    .map((link) => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+
+  const setActive = () => {
+    const y = window.scrollY + 120
+    let current = sections[0]
+    sections.forEach((section) => {
+      if (section.offsetTop <= y) current = section
+    })
+    links.forEach((link) => {
+      link.classList.toggle('is-active', link.getAttribute('href') === `#${current.id}`)
+    })
+  }
+
+  setActive()
+  window.addEventListener('scroll', setActive, { passive: true })
+}
+
+function initMockSegments() {
+  document.querySelectorAll('.mock-segmented').forEach((group) => {
+    group.querySelectorAll('.mock-seg').forEach((button) => {
+      button.addEventListener('click', () => {
+        group.querySelectorAll('.mock-seg').forEach((item) => item.classList.remove('is-on'))
+        button.classList.add('is-on')
+      })
+    })
+  })
+}
+
+function initTilt() {
+  if (reducedMotion || !finePointer) return
+  document.querySelectorAll('.tilt-target').forEach((target) => {
+    target.addEventListener('mousemove', (event) => {
+      const rect = target.getBoundingClientRect()
+      const px = (event.clientX - rect.left) / rect.width - 0.5
+      const py = (event.clientY - rect.top) / rect.height - 0.5
+      target.style.transform = `perspective(900px) rotateX(${py * -4}deg) rotateY(${px * 4}deg)`
+      target.classList.add('is-tilting')
+    })
+    target.addEventListener('mouseleave', () => {
+      target.style.transform = ''
+      target.classList.remove('is-tilting')
+    })
+  })
+}
+
+function initCursorFx() {
+  if (reducedMotion || !finePointer) return
+  const root = document.documentElement
+  const dot = document.querySelector('.cursor-dot')
+  root.classList.add('has-cursor-fx')
+
+  let targetX = window.innerWidth / 2
+  let targetY = window.innerHeight / 2
+  let currentX = targetX
+  let currentY = targetY
+
+  const interactiveSelector = 'a, button, summary, input, textarea, .mock-seg'
+
+  window.addEventListener(
+    'mousemove',
+    (event) => {
+      targetX = event.clientX
+      targetY = event.clientY
+      root.style.setProperty('--cursor-x', `${targetX}px`)
+      root.style.setProperty('--cursor-y', `${targetY}px`)
+    },
+    { passive: true },
+  )
+
+  window.addEventListener(
+    'mouseover',
+    (event) => {
+      if (!(event.target instanceof Element)) return
+      dot?.classList.toggle('is-hover', Boolean(event.target.closest(interactiveSelector)))
+    },
+    { passive: true },
+  )
+
+  const tick = () => {
+    currentX += (targetX - currentX) * 0.16
+    currentY += (targetY - currentY) * 0.16
+    if (dot) {
+      dot.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`
+    }
+    requestAnimationFrame(tick)
+  }
+  tick()
+}
+
+function animateCount(node, target) {
+  if (reducedMotion || !target) {
+    return String(target)
+  }
+  const duration = 900
+  const start = performance.now()
+  const from = 0
+  const formatter = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US')
+
+  return new Promise((resolve) => {
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1)
+      const eased = 1 - (1 - progress) ** 3
+      const value = Math.round(from + (target - from) * eased)
+      node.dataset.count = String(value)
+      resolve(formatter.format(value))
+      if (progress < 1) {
+        requestAnimationFrame(step)
+      }
+    }
+    requestAnimationFrame(step)
+  })
 }
 
 async function loadHealth() {
   const statsLine = document.getElementById('stats-line')
   if (!statsLine) return
+  statsLine.textContent = t('stats.loading', currentLang)
+  statsLine.classList.remove('is-live')
+
   try {
     const response = await fetch(HEALTH_URL)
     if (!response.ok) throw new Error('health failed')
     const health = await response.json()
-    const count = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US').format(
-      health.indexedListings ?? 0,
-    )
+    const countValue = health.indexedListings ?? 0
     const status =
       health.status === 'ok' && health.lastOutcome !== 'error'
         ? t('stats.live', currentLang)
         : t('stats.error', currentLang)
-    statsLine.textContent = t('stats.line', currentLang, { count, status })
+
+    if (!reducedMotion && countValue > 0) {
+      const formatter = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US')
+      const duration = 900
+      const start = performance.now()
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1)
+        const eased = 1 - (1 - progress) ** 3
+        const value = Math.round(countValue * eased)
+        statsLine.textContent = t('stats.line', currentLang, {
+          count: formatter.format(value),
+          status,
+        })
+        if (progress < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    } else {
+      statsLine.textContent = t('stats.line', currentLang, {
+        count: new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US').format(countValue),
+        status,
+      })
+    }
+
     if (status === t('stats.live', currentLang)) statsLine.classList.add('is-live')
   } catch {
     statsLine.textContent = t('stats.error', currentLang)
   }
 }
 
+initHeroLines()
+initReveal()
+initHeaderScroll()
+initNavSpy()
+initMockSegments()
+initTilt()
+initCursorFx()
 loadHealth()
 
 document.getElementById('access-form')?.addEventListener('submit', (event) => {
