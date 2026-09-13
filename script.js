@@ -205,7 +205,7 @@ async function loadHealth() {
         ? t('stats.live', currentLang)
         : t('stats.error', currentLang)
 
-    if (!reducedMotion && countValue > 0) {
+    if (!reducedMotion && !document.hidden && countValue > 0) {
       const formatter = new Intl.NumberFormat(currentLang === 'tr' ? 'tr-TR' : 'en-US')
       const duration = 900
       const start = performance.now()
