@@ -1,7 +1,7 @@
 const STORAGE_LANG = 'printmomentum-landing-lang'
 const STORAGE_THEME = 'printmomentum-landing-theme'
 const HEALTH_URL = 'https://app.printmomentum.com/api/v1/health'
-const ACCESS_EMAIL = 'aykutemyeyalcin@gmail.com'
+const ACCESS_EMAIL = 'aykutemyeyalcinn@gmail.com'
 
 function detectLang() {
   const stored = localStorage.getItem(STORAGE_LANG)
@@ -54,40 +54,6 @@ let currentTheme = detectTheme()
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const finePointer = window.matchMedia('(pointer: fine)').matches
 
-document.getElementById('year').textContent = String(new Date().getFullYear())
-applyI18n(currentLang)
-applyTheme(currentTheme)
-
-document.querySelectorAll('[data-lang]').forEach((button) => {
-  button.addEventListener('click', () => {
-    currentLang = button.getAttribute('data-lang')
-    localStorage.setItem(STORAGE_LANG, currentLang)
-    applyI18n(currentLang)
-    applyTheme(currentTheme)
-    loadHealth()
-  })
-})
-
-document.getElementById('theme-toggle')?.addEventListener('click', () => {
-  currentTheme = currentTheme === 'dark' ? 'light' : 'dark'
-  localStorage.setItem(STORAGE_THEME, currentTheme)
-  applyTheme(currentTheme)
-})
-
-const navToggle = document.querySelector('.nav-toggle')
-const siteNav = document.getElementById('site-nav')
-navToggle?.addEventListener('click', () => {
-  const open = siteNav?.classList.toggle('is-open')
-  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false')
-})
-
-siteNav?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    siteNav.classList.remove('is-open')
-    navToggle?.setAttribute('aria-expanded', 'false')
-  })
-})
-
 function initHeroLines() {
   document.querySelectorAll('.hero-line').forEach((line) => {
     line.classList.add('is-in')
@@ -138,6 +104,7 @@ function initNavSpy() {
   const setActive = () => {
     const y = window.scrollY + 120
     let current = sections[0]
+    if (!current) return
     sections.forEach((section) => {
       if (section.offsetTop <= y) current = section
     })
@@ -266,25 +233,68 @@ async function loadHealth() {
   }
 }
 
-initHeroLines()
-initReveal()
-initHeaderScroll()
-initNavSpy()
-initMockSegments()
-initTilt()
-initCursorFx()
-loadHealth()
+function boot() {
+  const yearEl = document.getElementById('year')
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear())
+  applyI18n(currentLang)
+  applyTheme(currentTheme)
 
-document.getElementById('access-form')?.addEventListener('submit', (event) => {
-  event.preventDefault()
-  const form = event.currentTarget
-  const data = new FormData(form)
-  const name = String(data.get('name') || '').trim()
-  const email = String(data.get('email') || '').trim()
-  const message = String(data.get('message') || '').trim()
-  const subject = encodeURIComponent('PrintMomentum beta access request')
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
-  window.location.href = `mailto:${ACCESS_EMAIL}?subject=${subject}&body=${body}`
-  const success = document.getElementById('access-success')
-  if (success) success.hidden = false
-})
+  document.querySelectorAll('[data-lang]').forEach((button) => {
+    button.addEventListener('click', () => {
+      currentLang = button.getAttribute('data-lang')
+      localStorage.setItem(STORAGE_LANG, currentLang)
+      applyI18n(currentLang)
+      applyTheme(currentTheme)
+      loadHealth()
+    })
+  })
+
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark'
+    localStorage.setItem(STORAGE_THEME, currentTheme)
+    applyTheme(currentTheme)
+  })
+
+  const navToggle = document.querySelector('.nav-toggle')
+  const siteNav = document.getElementById('site-nav')
+  navToggle?.addEventListener('click', () => {
+    const open = siteNav?.classList.toggle('is-open')
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+  })
+
+  siteNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      siteNav.classList.remove('is-open')
+      navToggle?.setAttribute('aria-expanded', 'false')
+    })
+  })
+
+  initHeroLines()
+  initReveal()
+  initHeaderScroll()
+  initNavSpy()
+  initMockSegments()
+  initTilt()
+  initCursorFx()
+  loadHealth()
+
+  document.getElementById('access-form')?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const data = new FormData(form)
+    const name = String(data.get('name') || '').trim()
+    const email = String(data.get('email') || '').trim()
+    const message = String(data.get('message') || '').trim()
+    const subject = encodeURIComponent('PrintMomentum beta access request')
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
+    window.location.href = `mailto:${ACCESS_EMAIL}?subject=${subject}&body=${body}`
+    const success = document.getElementById('access-success')
+    if (success) success.hidden = false
+  })
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot)
+} else {
+  boot()
+}
