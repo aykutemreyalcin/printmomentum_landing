@@ -285,7 +285,7 @@ function boot() {
     const name = String(data.get('name') || '').trim()
     const email = String(data.get('email') || '').trim()
     const message = String(data.get('message') || '').trim()
-    const subject = encodeURIComponent('PrintMomentum beta access request')
+    const subject = encodeURIComponent('PrintMomentum question')
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
     window.location.href = `mailto:${ACCESS_EMAIL}?subject=${subject}&body=${body}`
     const success = document.getElementById('access-success')
