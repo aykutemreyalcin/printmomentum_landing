@@ -65,6 +65,19 @@ function applyI18n(locale) {
     const text = t(node.getAttribute('data-i18n'), locale)
     if (text != null) node.textContent = text
   })
+  // [[word]] in a translation becomes a <mark>; built with DOM nodes, never innerHTML.
+  document.querySelectorAll('[data-i18n-mark]').forEach((node) => {
+    const text = t(node.getAttribute('data-i18n-mark'), locale)
+    if (text == null) return
+    node.replaceChildren(
+      ...text.split(/(\[\[[^\]]+\]\])/).filter(Boolean).map((part) => {
+        if (!part.startsWith('[[')) return document.createTextNode(part)
+        const mark = document.createElement('mark')
+        mark.textContent = part.slice(2, -2)
+        return mark
+      }),
+    )
+  })
   document.querySelectorAll('[data-i18n-attr]').forEach((node) => {
     node
       .getAttribute('data-i18n-attr')
@@ -109,9 +122,13 @@ let currentTheme = detectTheme()
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme
   const meta = document.querySelector('meta[name="theme-color"]')
-  if (meta) meta.content = theme === 'dark' ? '#0f1419' : '#f5f7fa'
-  const label = document.querySelector('#theme-toggle .theme-label')
-  if (label) label.textContent = theme === 'dark' ? t('theme.light', currentLang) : t('theme.dark', currentLang)
+  if (meta) meta.content = theme === 'dark' ? '#0e1116' : '#f6f7f9'
+  const toggle = document.getElementById('theme-toggle')
+  if (toggle) {
+    const label = t(theme === 'dark' ? 'theme.toLight' : 'theme.toDark', currentLang)
+    toggle.setAttribute('aria-label', label)
+    toggle.setAttribute('title', label)
+  }
 }
 
 let healthCount = null
@@ -155,26 +172,20 @@ function initNav() {
   const navToggle = document.querySelector('.nav-toggle')
   const siteNav = document.getElementById('site-nav')
   if (!navToggle || !siteNav) return
-  navToggle.addEventListener('click', () => {
-    const open = siteNav.classList.toggle('is-open')
+  const setOpen = (open) => {
+    siteNav.classList.toggle('is-open', open)
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false')
+  }
+  navToggle.addEventListener('click', () => setOpen(!siteNav.classList.contains('is-open')))
+  siteNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)))
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && siteNav.classList.contains('is-open')) {
+      setOpen(false)
+      navToggle.focus()
+    }
   })
-  siteNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      siteNav.classList.remove('is-open')
-      navToggle.setAttribute('aria-expanded', 'false')
-    })
-  })
-}
-
-function initMockSegments() {
-  document.querySelectorAll('.mock-segmented').forEach((group) => {
-    const buttons = group.querySelectorAll('.mock-seg')
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        buttons.forEach((item) => item.classList.toggle('is-on', item === button))
-      })
-    })
+  window.matchMedia('(min-width: 961px)').addEventListener('change', (event) => {
+    if (event.matches) setOpen(false)
   })
 }
 
@@ -203,7 +214,6 @@ function boot() {
   })
 
   initNav()
-  initMockSegments()
   loadHealth()
 }
 

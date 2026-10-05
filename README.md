@@ -10,6 +10,12 @@ python3 -m http.server 4173
 
 Open `http://localhost:4173` (add `?lang=tr` for Turkish).
 
+Check translations (EN/TR key parity and every key used in the pages exists):
+
+```bash
+node scripts/check-i18n.mjs && node --check script.js
+```
+
 ## Deploy
 
 Pushes to `main` sync this folder to S3 and EC2 via GitHub Actions (`.github/workflows/ci.yml`).
@@ -18,8 +24,9 @@ Production path on the box: `/opt/printmomentum/landing` (served by Caddy on `pr
 
 ## Files
 
-- `index.html` — main landing (EN/TR, dark mode, pricing, FAQ, live "products tracked" line from `/api/v1/health` with a plain fallback)
+- `index.html` — main landing (EN/TR, dark mode): hero with the rising designs list, rising designs (speed score 0–100), your shop (Etsy connection, trademark risk scan, sales overview), pricing, FAQ; live "products tracked" line from `/api/v1/health` with a plain fallback. Product mocks are plain HTML/CSS with made-up data.
 - `privacy.html`, `terms.html` — legal pages, full EN and TR versions side by side (DRAFT, pending legal review)
 - `i18n.js` — translations (every key must exist in both `en` and `tr`)
 - `script.js` — language (`?lang=en|tr`, then saved choice, then browser), theme, health stats
 - `og-image.png` — social sharing image (1200×630)
+- `pm-logo-64.png` (header/footer logo, 2× for 28px), `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` — small variants cut from `pm-logo.png` (1024px original, kept as the source)
