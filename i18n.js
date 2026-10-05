@@ -37,7 +37,7 @@ window.PM_I18N = {
     'period.today': 'Today',
     'period.week': 'This week',
     'period.month': 'This month',
-    'badge.bestseller': 'Etsy Bestseller',
+    'badge.bestseller': 'Bestseller',
     'badge.trademark': 'Trademark risk: team name',
 
     'rising.mockLabel': 'Example of the rising designs list',
@@ -66,7 +66,7 @@ window.PM_I18N = {
     'rising.body':
       'Each design gets a speed score from 0 to 100, based on how fast it climbs Etsy search and gains favorites and reviews. A new design that is taking off shows up here before it becomes a bestseller.',
     'rising.point1': 'Speed score for today, this week or this month',
-    'rising.point2': 'Etsy Bestseller badges and estimated monthly sales',
+    'rising.point2': 'Bestseller badges from recent sales signals and estimated monthly sales',
     'rising.point3': 'A warning when a trending design uses a brand name',
 
     'detail.mockLabel': 'Example of a design’s details',
@@ -162,7 +162,7 @@ window.PM_I18N = {
     'pricing.per': '/ month',
     'pricing.tax': 'Tax included',
     'pricing.b1': 'Rising t-shirt designs with a 0–100 speed score',
-    'pricing.b2': 'Etsy Bestseller badges and estimated monthly sales',
+    'pricing.b2': 'Bestseller badges and estimated monthly sales',
     'pricing.b3': 'Daily trademark risk scan of your own listings',
     'pricing.b4': 'Your orders, units and revenue for 7, 30 or 90 days',
     'pricing.b5': 'Niche opportunities and CSV download',
@@ -265,7 +265,7 @@ window.PM_I18N = {
     'period.today': 'Bugün',
     'period.week': 'Bu hafta',
     'period.month': 'Bu ay',
-    'badge.bestseller': 'Etsy Çok Satan',
+    'badge.bestseller': 'Çok satan',
     'badge.trademark': 'Marka riski: takım adı',
 
     'rising.mockLabel': 'Yükselen tasarımlar listesinden örnek',
@@ -294,7 +294,7 @@ window.PM_I18N = {
     'rising.body':
       'Her tasarım, Etsy aramasında ne kadar hızlı yukarı çıktığına, ne kadar hızlı favori ve yorum aldığına göre 0–100 arası bir hız puanı alır. Hızla yükselen yeni bir tasarımı, çok satanlar arasına girmeden önce burada görürsün.',
     'rising.point1': 'Bugün, bu hafta ya da bu ay için hız puanı',
-    'rising.point2': 'Etsy “Çok Satan” rozetleri ve tahmini aylık satış',
+    'rising.point2': 'Son satış sinyallerine dayanan “Çok satan” rozetleri ve tahmini aylık satış',
     'rising.point3': 'Yükselen bir tasarımda marka adı geçiyorsa uyarı',
 
     'detail.mockLabel': 'Bir tasarımın ayrıntılarından örnek',
@@ -390,7 +390,7 @@ window.PM_I18N = {
     'pricing.per': '/ ay',
     'pricing.tax': 'Vergiler dahil',
     'pricing.b1': '0–100 hız puanıyla yükselen tişört tasarımları',
-    'pricing.b2': 'Etsy “Çok Satan” rozetleri ve tahmini aylık satış',
+    'pricing.b2': '“Çok satan” rozetleri ve tahmini aylık satış',
     'pricing.b3': 'Kendi ilanların için günlük marka riski taraması',
     'pricing.b4': '7, 30 ya da 90 günlük sipariş, adet ve gelirin',
     'pricing.b5': 'Niş fırsatları ve CSV indirme',
