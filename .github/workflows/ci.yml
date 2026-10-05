@@ -30,7 +30,8 @@ jobs:
           aws s3 sync . "s3://${AWS_S3_BUCKET}/host/landing/" \
             --exclude ".git/*" \
             --exclude ".github/*" \
-            --exclude "README.md"
+            --exclude "README.md" \
+            --exclude "scripts/*"
       - name: Sync landing on EC2
         run: |
           set -euo pipefail
