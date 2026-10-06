@@ -64,7 +64,7 @@ window.PM_I18N = {
     'rising.kicker': 'Rising designs',
     'rising.title': 'Spot designs that are taking off, early.',
     'rising.body':
-      'Each design gets a speed score from 0 to 100, based on how fast it climbs Etsy search and gains favorites and reviews. A new design that is taking off shows up here before it becomes a bestseller.',
+      'Each design gets a speed score from 0 to 100, based on how fast it climbs Etsy search and gains favorites and views. 100 means it is among the very fastest designs of that period. A new design that is taking off shows up here before it becomes a bestseller.',
     'rising.point1': 'Speed score for today, this week or this month',
     'rising.point2': 'Bestseller badges from recent sales signals and estimated monthly sales',
     'rising.point3': 'A warning when a trending design uses a brand name',
@@ -84,7 +84,7 @@ window.PM_I18N = {
     'extras.periods.title': 'Today, this week, this month',
     'extras.periods.body': 'Switch the time range to see quick spikes or steady climbers.',
     'extras.csv.title': 'CSV download',
-    'extras.csv.body': 'Download any list and open it in Excel or Google Sheets.',
+    'extras.csv.body': 'Download the rising designs list and open it in Excel or Google Sheets.',
     'extras.fresh.title': 'Updated 6 times a day',
     'extras.fresh.body': 'Fresh numbers from Etsy search, from morning to night.',
 
@@ -93,7 +93,7 @@ window.PM_I18N = {
     'shop.copy':
       'Connect once and PrintMomentum also looks after your own listings: it checks them for trademark risks and shows your sales in one place.',
 
-    'connect.title': 'Connect your Etsy store in one click',
+    'connect.title': 'Connect your Etsy shop in a minute',
     'connect.body':
       'You approve the connection on Etsy’s own page, through Etsy’s official sign-in. We only get read-only access, so we can see your listings and orders but can never change them.',
     'connect.point1': 'Official Etsy connection, approved by you on Etsy',
@@ -166,7 +166,7 @@ window.PM_I18N = {
     'pricing.b3': 'Daily trademark risk scan of your own listings',
     'pricing.b4': 'Your orders, units and revenue for 7, 30 or 90 days',
     'pricing.b5': 'Niche opportunities and CSV download',
-    'pricing.b6': 'Cancel anytime, in a few clicks',
+    'pricing.b6': 'Cancel anytime from your profile',
     'pricing.cta': 'Start 7-day free trial',
     'pricing.note':
       'You add a card to start the trial. Cancel before the 7 days are over and you pay nothing. Payments are handled by Stripe.',
@@ -177,7 +177,7 @@ window.PM_I18N = {
       'A tool for people who sell t-shirts on Etsy. It shows which designs are rising fastest in Etsy search right now, and, if you connect your shop, checks your own listings for trademark risks and sums up your sales.',
     'faq.q2': 'How do you measure how fast a design is rising?',
     'faq.a2':
-      'We look at how quickly a design moves up in Etsy search and how fast it gains new favorites and reviews. Recent change counts more than total size, so a new design that is taking off can rank above an old bestseller. The result is a speed score from 0 to 100: the higher it is, the faster the design is rising right now.',
+      'We look at how quickly a design moves up in Etsy search and how fast it gains new favorites and views. Recent change counts more than total size, so a new design that is taking off can rank above an old bestseller. The result is a speed score from 0 to 100, compared with all other designs in the same period: the higher it is, the faster the design is rising right now. 100 means it is among the very fastest designs of that period.',
     'faq.q3': 'Are the sales numbers exact?',
     'faq.a3':
       'For other shops’ designs, no. Etsy does not publish sales per design, so we estimate them from public signals and show a range, such as ~80–120 a month. Use it to compare designs, not as an exact figure. The numbers for your own connected shop come straight from your Etsy orders.',
@@ -188,10 +188,10 @@ window.PM_I18N = {
       'PrintMomentum Pro is $29 a month, tax included. There is one plan with every feature. The first 7 days are free.',
     'faq.q6': 'How does the free trial work?',
     'faq.a6':
-      'You create an account and add a card. Nothing is charged for 7 days. If you do not cancel, the $29 monthly plan starts when the trial ends.',
+      'You create an account and add a card. Nothing is charged for 7 days, and if you cancel during the trial you pay nothing. If you do not cancel, the $29 monthly plan starts when the trial ends.',
     'faq.q7': 'Can I cancel anytime?',
     'faq.a7':
-      'Yes. Open Subscription in your account and cancel in a few clicks. You keep access until the end of the period you already paid for.',
+      'Yes. Open your profile in the app and cancel your subscription there, any time. Cancelling ends your access right away, and there is no refund for the remaining days of the month you already paid for. If you cancel during the free trial, it costs nothing.',
     'faq.q8': 'How is payment taken?',
     'faq.a8':
       'Payments go through Stripe, a widely used payment provider. Your card details go straight to Stripe; we never see or store your card number. You get a receipt by email after each payment.',
@@ -209,7 +209,7 @@ window.PM_I18N = {
       'Yes. You connect through Etsy’s official sign-in page and approve the access there, so we never see your Etsy password. The access is read-only: we can’t edit, delete or publish listings, and we can’t message buyers. You can disconnect anytime in your account.',
     'faq.q13': 'What data do you access?',
     'faq.a13':
-      'Only what the trademark scan and your sales overview need: your shop name and profile, your listings (title, tags, status) and your orders (date, units and total per listing). We do not store your buyers’ names, addresses or messages.',
+      'Only what the trademark scan and your sales overview need: your shop name and profile, your listings (title, tags, description, price, quantity, SKU, photos and status) and your orders (date, units, total per listing and the buyer’s country). We do not store your buyers’ names, addresses, emails or messages.',
     'faq.q14': 'Who sees my sales data?',
     'faq.a14':
       'Only you. Your shop’s numbers are shown only in your own account. We don’t share or sell them, and they never appear in the lists other users see.',
@@ -228,6 +228,8 @@ window.PM_I18N = {
     'legal.privacyTitle': 'Privacy Policy · PrintMomentum',
     'legal.termsTitle': 'Terms of Use · PrintMomentum',
     'legal.nav': 'Legal pages',
+    'legal.privacyDesc': 'What PrintMomentum collects, why, who processes it and how to get your data deleted.',
+    'legal.termsDesc': 'The rules for using PrintMomentum: price, free trial, cancelling, estimates and fair use.',
   },
   tr: {
     'meta.title': 'PrintMomentum · Etsy’de yükselen tişört tasarımları ve marka kontrolü',
@@ -292,7 +294,7 @@ window.PM_I18N = {
     'rising.kicker': 'Yükselen tasarımlar',
     'rising.title': 'Yükselişe geçen tasarımları erkenden gör.',
     'rising.body':
-      'Her tasarım, Etsy aramasında ne kadar hızlı yukarı çıktığına, ne kadar hızlı favori ve yorum aldığına göre 0–100 arası bir hız puanı alır. Hızla yükselen yeni bir tasarımı, çok satanlar arasına girmeden önce burada görürsün.',
+      'Her tasarım, Etsy aramasında ne kadar hızlı yukarı çıktığına, ne kadar hızlı favori ve görüntülenme aldığına göre 0–100 arası bir hız puanı alır. 100, o dönemin en hızlı yükselen tasarımlarından biri olduğu anlamına gelir. Hızla yükselen yeni bir tasarımı, çok satanlar arasına girmeden önce burada görürsün.',
     'rising.point1': 'Bugün, bu hafta ya da bu ay için hız puanı',
     'rising.point2': 'Son satış sinyallerine dayanan “Çok satan” rozetleri ve tahmini aylık satış',
     'rising.point3': 'Yükselen bir tasarımda marka adı geçiyorsa uyarı',
@@ -312,7 +314,7 @@ window.PM_I18N = {
     'extras.periods.title': 'Bugün, bu hafta, bu ay',
     'extras.periods.body': 'Ani yükselişleri ya da istikrarlı çıkanları görmek için zaman aralığını değiştir.',
     'extras.csv.title': 'CSV indirme',
-    'extras.csv.body': 'Herhangi bir listeyi indir, Excel ya da Google E-Tablolar’da aç.',
+    'extras.csv.body': 'Yükselen tasarımlar listesini indir, Excel ya da Google E-Tablolar’da aç.',
     'extras.fresh.title': 'Günde 6 kez güncel',
     'extras.fresh.body': 'Etsy aramasından sabahtan akşama taze veriler.',
 
@@ -321,7 +323,7 @@ window.PM_I18N = {
     'shop.copy':
       'Bir kez bağla, PrintMomentum kendi ilanlarına da göz kulak olsun: onları marka riskine karşı kontrol eder ve satışlarını tek ekranda gösterir.',
 
-    'connect.title': 'Etsy mağazanı tek tıkla bağla',
+    'connect.title': 'Etsy mağazanı bir dakikada bağla',
     'connect.body':
       'Bağlantıyı Etsy’nin kendi sayfasında, Etsy’nin resmi girişiyle onaylarsın. Yalnızca okuma izni alırız: ilanlarını ve siparişlerini görebiliriz ama hiçbirini değiştiremeyiz.',
     'connect.point1': 'Resmi Etsy bağlantısı, onayı Etsy’de sen verirsin',
@@ -346,7 +348,7 @@ window.PM_I18N = {
     'scan.point3': 'Tek tıkla ilanı Etsy’de açıp düzelt',
     'scan.mockLabel': 'Marka kontrolünden örnek',
     'scan.mockTitle': 'Marka kontrolü',
-    'scan.count': '2 ilan bakılmayı bekliyor',
+    'scan.count': '2 ilanı kontrol et',
     'scan.flag1.title': 'Football Mom Shirt, [[Riverton Rockets]] Game Day Tee',
     'scan.flag1.why': 'Bir spor takımının adı',
     'scan.flag1.where': 'başlıkta ve 2 etikette geçiyor',
@@ -394,7 +396,7 @@ window.PM_I18N = {
     'pricing.b3': 'Kendi ilanların için günlük marka riski taraması',
     'pricing.b4': '7, 30 ya da 90 günlük sipariş, adet ve gelirin',
     'pricing.b5': 'Niş fırsatları ve CSV indirme',
-    'pricing.b6': 'Birkaç tıkla, istediğin zaman iptal',
+    'pricing.b6': 'Profilinden istediğin zaman iptal et',
     'pricing.cta': '7 gün ücretsiz dene',
     'pricing.note':
       'Denemeyi başlatmak için kart eklersin. 7 gün dolmadan iptal edersen hiçbir ücret ödemezsin. Ödemeler Stripe üzerinden alınır.',
@@ -405,7 +407,7 @@ window.PM_I18N = {
       'Etsy’de tişört satanlar için bir araç. Etsy aramasında şu an en hızlı yükselen tasarımları gösterir; mağazanı bağlarsan kendi ilanlarını marka riskine karşı kontrol eder ve satışlarını özetler.',
     'faq.q2': 'Bir tasarımın ne kadar hızlı yükseldiğini nasıl ölçüyorsunuz?',
     'faq.a2':
-      'Tasarımın Etsy aramasında ne kadar hızlı yukarı çıktığına, ne kadar hızlı yeni favori ve yorum aldığına bakıyoruz. Toplam büyüklükten çok son değişim önemli; bu yüzden hızla yükselen yeni bir tasarım, eski bir çok satanın önüne geçebilir. Sonuç 0–100 arası bir hız puanıdır: puan ne kadar yüksekse tasarım şu an o kadar hızlı yükseliyor demektir.',
+      'Tasarımın Etsy aramasında ne kadar hızlı yukarı çıktığına, ne kadar hızlı yeni favori ve görüntülenme aldığına bakıyoruz. Toplam büyüklükten çok son değişim önemli; bu yüzden hızla yükselen yeni bir tasarım, eski bir çok satanın önüne geçebilir. Sonuç, aynı dönemdeki diğer tasarımlarla karşılaştırılan 0–100 arası bir hız puanıdır: puan ne kadar yüksekse tasarım şu an o kadar hızlı yükseliyor demektir. 100, o dönemin en hızlı yükselen tasarımlarından biri olduğu anlamına gelir.',
     'faq.q3': 'Satış sayıları kesin mi?',
     'faq.a3':
       'Başka mağazaların tasarımları için hayır. Etsy tasarım bazında satış sayısı yayınlamıyor; bu yüzden satışı herkese açık verilerden tahmin ediyor ve “~80–120 / ay” gibi bir aralık olarak gösteriyoruz. Kesin sayı olarak değil, tasarımları karşılaştırmak için kullan. Bağladığın kendi mağazanın rakamları ise doğrudan Etsy siparişlerinden gelir.',
@@ -416,10 +418,10 @@ window.PM_I18N = {
       'PrintMomentum Pro aylık $29, vergiler dahil. Tüm özellikleri içeren tek bir plan var. İlk 7 gün ücretsiz.',
     'faq.q6': 'Ücretsiz deneme nasıl işliyor?',
     'faq.a6':
-      'Hesap oluşturup kart eklersin. 7 gün boyunca hiçbir ücret alınmaz. İptal etmezsen deneme bitince aylık $29’luk plan başlar.',
+      'Hesap oluşturup kart eklersin. 7 gün boyunca hiçbir ücret alınmaz; deneme sırasında iptal edersen hiçbir şey ödemezsin. İptal etmezsen deneme bitince aylık $29’luk plan başlar.',
     'faq.q7': 'İstediğim zaman iptal edebilir miyim?',
     'faq.a7':
-      'Evet. Hesabındaki Abonelik sayfasını aç, birkaç tıkla iptal et. Ödediğin dönemin sonuna kadar kullanmaya devam edersin.',
+      'Evet. Uygulamada profilini aç ve aboneliğini oradan istediğin zaman iptal et. İptal ettiğinde erişimin hemen sona erer; ödediğin ayın kalan günleri için iade yapılmaz. Ücretsiz deneme sırasında iptal edersen hiçbir ücret ödemezsin.',
     'faq.q8': 'Ödeme nasıl alınıyor?',
     'faq.a8':
       'Ödemeler, yaygın kullanılan bir ödeme hizmeti olan Stripe üzerinden alınır. Kart bilgilerin doğrudan Stripe’a gider; kart numaranı biz görmeyiz ve saklamayız. Her ödemeden sonra e-postana makbuz gelir.',
@@ -437,12 +439,12 @@ window.PM_I18N = {
       'Evet. Bağlantıyı Etsy’nin resmi giriş sayfasında onaylarsın; Etsy şifreni biz hiç görmeyiz. İzin yalnızca okuma içindir: ilanlarını düzenleyemez, silemez ya da yayınlayamayız, alıcılarına mesaj gönderemeyiz. Bağlantıyı hesabından istediğin zaman kaldırabilirsin.',
     'faq.q13': 'Hangi verilere erişiyorsunuz?',
     'faq.a13':
-      'Yalnızca marka taraması ve satış özetinin ihtiyaç duyduklarına: mağaza adın ve profilin, ilanların (başlık, etiketler, durum) ve siparişlerin (ilan başına tarih, adet ve tutar). Alıcılarının adını, adresini ya da mesajlarını saklamayız.',
+      'Yalnızca marka taraması ve satış özetinin ihtiyaç duyduklarına: mağaza adın ve profilin, ilanların (başlık, etiketler, açıklama, fiyat, stok adedi, SKU, fotoğraflar ve durum) ve siparişlerin (tarih, adet, ilan başına tutar ve alıcının ülkesi). Alıcılarının adını, adresini, e-postasını ya da mesajlarını saklamayız.',
     'faq.q14': 'Satış verilerimi kim görür?',
     'faq.a14':
       'Yalnızca sen. Mağazanın rakamları sadece kendi hesabında görünür. Bunları kimseyle paylaşmaz, satmayız; diğer kullanıcıların gördüğü listelerde de asla yer almazlar.',
 
-    'contact.title': 'Başka bir sorun mu var?',
+    'contact.title': 'Aklına takılan bir şey mi var?',
     'contact.body': 'Bize yaz. Genellikle bir iş günü içinde yanıt veriyoruz.',
 
     'footer.contact': 'İletişim',
@@ -456,5 +458,7 @@ window.PM_I18N = {
     'legal.privacyTitle': 'Gizlilik Politikası · PrintMomentum',
     'legal.termsTitle': 'Kullanım Koşulları · PrintMomentum',
     'legal.nav': 'Yasal sayfalar',
+    'legal.privacyDesc': 'PrintMomentum’un neleri topladığı, neden topladığı, kimlerin işlediği ve verilerini nasıl sildirebileceğin.',
+    'legal.termsDesc': 'PrintMomentum’u kullanma kuralları: ücret, ücretsiz deneme, iptal, tahminler ve adil kullanım.',
   },
 }

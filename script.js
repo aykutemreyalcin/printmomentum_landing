@@ -2,7 +2,6 @@ const STORAGE_LANG = 'printmomentum-landing-lang'
 const STORAGE_THEME = 'printmomentum-landing-theme'
 const HEALTH_URL = 'https://app.printmomentum.com/api/v1/health'
 const HEALTH_TIMEOUT_MS = 5000
-const SITE_ORIGIN = 'https://printmomentum.com'
 const LANGS = ['en', 'tr']
 
 function readStorage(key) {
@@ -30,7 +29,18 @@ function langFromUrl() {
   }
 }
 
+// The home page exists as two static pages: / (English) and /tr/ (Turkish).
+const HOME_PATHS = { en: '/', tr: '/tr/' }
+const isHome = () => document.body?.dataset.page === 'home'
+
+function langFromPath() {
+  if (!isHome()) return null
+  return window.location.pathname.startsWith('/tr/') || window.location.pathname === '/tr' ? 'tr' : 'en'
+}
+
 function detectLang() {
+  const fromPath = langFromPath()
+  if (fromPath === 'tr') return 'tr'
   const fromUrl = langFromUrl()
   if (fromUrl) return fromUrl
   const stored = readStorage(STORAGE_LANG)
@@ -99,21 +109,23 @@ function applyI18n(locale) {
   })
 }
 
-function syncLangUrl(locale, explicit) {
-  const canonical = document.querySelector('link[rel="canonical"]')
-  const hasAlternates = Boolean(document.querySelector('link[rel="alternate"][hreflang]'))
-  if (explicit) {
-    try {
-      const url = new URL(window.location.href)
-      url.searchParams.set('lang', locale)
-      window.history.replaceState(null, '', url)
-    } catch {
-      /* ignore */
-    }
-  }
-  if (canonical && hasAlternates && langFromUrl()) {
-    canonical.href = `${SITE_ORIGIN}${window.location.pathname}?lang=${locale}`
-  }
+// Old ?lang= links to the home page go to the static page for that language.
+function redirectOldLangUrl() {
+  const fromUrl = langFromUrl()
+  if (!isHome() || !fromUrl) return false
+  const target = HOME_PATHS[fromUrl]
+  if (window.location.pathname === target) return false
+  window.location.replace(`${target}${window.location.hash}`)
+  return true
+}
+
+// On the home page, switching language opens the other static page; elsewhere it switches in place.
+function goToLang(locale) {
+  if (!isHome()) return false
+  const target = HOME_PATHS[locale]
+  if (langFromPath() === locale && window.location.pathname === target) return false
+  window.location.assign(`${target}${window.location.hash}`)
+  return true
 }
 
 let currentLang = detectLang()
@@ -192,17 +204,17 @@ function initNav() {
 function boot() {
   const yearEl = document.getElementById('year')
   if (yearEl) yearEl.textContent = String(new Date().getFullYear())
+  if (redirectOldLangUrl()) return
   applyI18n(currentLang)
   applyTheme(currentTheme)
-  syncLangUrl(currentLang, false)
 
   document.querySelectorAll('[data-lang]').forEach((button) => {
     button.addEventListener('click', () => {
       currentLang = button.getAttribute('data-lang')
       writeStorage(STORAGE_LANG, currentLang)
+      if (goToLang(currentLang)) return
       applyI18n(currentLang)
       applyTheme(currentTheme)
-      syncLangUrl(currentLang, true)
       renderStats()
     })
   })

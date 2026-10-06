@@ -1,7 +1,8 @@
 <!doctype html>
 <!--
   DRAFT — plain-language privacy policy, written 4 October 2026 for the Cognito + Stripe launch,
-  updated 5 October 2026 for the Etsy shop connection (trademark scan + sales overview).
+  updated 5 October 2026 for the Etsy shop connection (trademark scan + sales overview),
+  updated 6 October 2026 (processors Cloudflare + Google Fonts, stored order/listing fields, cancellation, account closure).
   Needs review by a lawyer (GDPR / KVKK, operator legal name and address, data-transfer wording)
   before it is treated as final. Keep EN and TR versions in sync.
 -->
@@ -12,15 +13,14 @@
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#f6f7f9" />
     <meta name="color-scheme" content="light dark" />
-    <script>
-      try {
-        var pmTheme = localStorage.getItem('printmomentum-landing-theme')
-        if (pmTheme !== 'light' && pmTheme !== 'dark') {
-          pmTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        }
-        document.documentElement.setAttribute('data-theme', pmTheme)
-      } catch (e) {}
-    </script>
+    <script src="/theme-init.js?v=20261006-1"></script>
+    <meta name="description" content="What PrintMomentum collects, why, who processes it and how to get your data deleted." data-i18n-attr="content:legal.privacyDesc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PrintMomentum" />
+    <meta property="og:url" content="https://printmomentum.com/privacy.html" />
+    <meta property="og:title" content="Privacy Policy · PrintMomentum" data-i18n-attr="content:legal.privacyTitle" />
+    <meta property="og:description" content="What PrintMomentum collects, why, who processes it and how to get your data deleted." data-i18n-attr="content:legal.privacyDesc" />
+    <meta property="og:image" content="https://printmomentum.com/og-image.png" />
     <link rel="canonical" href="https://printmomentum.com/privacy.html" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=20261005-1" />
+    <link rel="stylesheet" href="/styles.css?v=20261006-1" />
     <title data-i18n="legal.privacyTitle">Privacy Policy · PrintMomentum</title>
   </head>
   <body>
@@ -60,7 +60,7 @@
     <main id="main" class="legal-page container">
         <article data-lang-section="en" lang="en">
           <h1>Privacy Policy</h1>
-          <p class="updated">Last updated: 5 October 2026</p>
+          <p class="updated">Last updated: 6 October 2026</p>
           <p>
             PrintMomentum ("we", "us") is a research tool for people who sell t-shirts on Etsy. This page explains, in
             plain words, what we collect on printmomentum.com and app.printmomentum.com, why, and what you can do about it.
@@ -76,14 +76,16 @@
             <li>
               <strong>Your subscription.</strong> When you start a trial or subscribe, payment is handled by Stripe. We
               receive and keep your Stripe customer ID, your plan, the subscription status (for example trial, active or
-              cancelled) and the trial and renewal dates. We never receive or store your full card number.
+              cancelled) and the trial and renewal dates. We never receive or store your full card number. You can
+              cancel any time from your profile in the app. Cancelling ends your access immediately and there is no
+              refund for the remaining days; cancelling during the free trial costs nothing.
             </li>
             <li>
               <strong>What you save in the app.</strong> Designs you save, and your settings such as language and theme.
             </li>
             <li>
               <strong>Your Etsy shop, if you connect it.</strong> If you connect your own Etsy shop, we keep the
-              read-only access Etsy gives us, your listings' titles and tags, and your order totals per listing. See
+              read-only access Etsy gives us, your listings' details and photos, and your orders per listing. See
               "Connecting your Etsy shop" below for the details.
             </li>
             <li>
@@ -91,7 +93,8 @@
             </li>
             <li>
               <strong>Technical logs.</strong> Standard server logs (such as IP address, time and page requested) to
-              keep the service secure and working.
+              keep the service secure and working. Our network provider Cloudflare sees the same technical data when
+              it delivers the site to you.
             </li>
             <li>
               <strong>Public Etsy listing data.</strong> Title, image, price, shop name and public counts of listings that
@@ -126,8 +129,10 @@
           <p><strong>What we store:</strong></p>
           <ul>
             <li>Your shop name and the read-only access Etsy gives us, kept securely on our servers.</li>
-            <li>Your listings' titles and tags, so we can run the daily trademark scan.</li>
-            <li>Per listing: number of orders, units sold, order totals and dates, for your sales overview.</li>
+            <li>Your listings' titles, tags, descriptions, prices, quantities, SKUs, photos and status, so we can run
+              the daily trademark scan and show your listings.</li>
+            <li>Per order: the Etsy order number, date, paid status, currency, units and totals per listing, and the
+              buyer's country (no name or address), for your sales overview.</li>
           </ul>
           <p>
             We do not store your buyers' names, addresses, emails or messages. Your shop's numbers are shown only in your
@@ -149,7 +154,15 @@
 
           <h2>Who we share it with</h2>
           <ul>
-            <li><strong>Amazon Web Services</strong> — hosting, databases and sign-in (Amazon Cognito).</li>
+            <li><strong>Amazon Web Services</strong> — hosting, databases, backups and sign-in (Amazon Cognito).</li>
+            <li>
+              <strong>Cloudflare</strong> — delivers and protects our websites. All visits pass through Cloudflare's
+              network, which processes your IP address and request details.
+            </li>
+            <li>
+              <strong>Google Fonts</strong> — our pages load the Inter Tight font from Google's servers, so your browser
+              sends your IP address to Google when a page loads.
+            </li>
             <li>
               <strong>Stripe</strong> — payments, receipts and invoices. Stripe handles your card under its own
               <a class="text-link" href="https://stripe.com/privacy" rel="noopener">privacy policy</a>.
@@ -161,8 +174,15 @@
           <h2>How long we keep it</h2>
           <p>
             Account data: while your account is open, and deleted after you ask us to close it. Billing records: as long
-            as tax law requires. Server logs: a short time, for security. Public listing data: as long as needed to run
-            the service and as allowed by Etsy's rules.
+            as tax law requires. Server logs: a short time, for security. Backups: up to 31 days. Public listing data: as
+            long as needed to run the service and as allowed by Etsy's rules.
+          </p>
+          <p>
+            <strong>Closing your account:</strong> write to
+            <a class="text-link" href="mailto:hello@printmomentum.com">hello@printmomentum.com</a> from the email address
+            of your account. We cancel any subscription, remove the Etsy connection and delete your saved designs, shop
+            listings, sales data and sign-in account, usually within 30 days. Billing records we must keep for tax law
+            stay with Stripe and in our accounts, and copies in backups disappear within 31 days.
           </p>
 
           <h2>Your choices</h2>
@@ -188,7 +208,7 @@
 
         <article data-lang-section="tr" lang="tr" hidden>
           <h1>Gizlilik Politikası</h1>
-          <p class="updated">Son güncelleme: 5 Ekim 2026</p>
+          <p class="updated">Son güncelleme: 6 Ekim 2026</p>
           <p>
             PrintMomentum ("biz"), Etsy'de tişört satanlar için bir araştırma aracıdır. Bu sayfa, printmomentum.com ve
             app.printmomentum.com üzerinde neleri topladığımızı, neden topladığımızı ve bu konuda neler yapabileceğini sade
@@ -205,14 +225,16 @@
             <li>
               <strong>Aboneliğin.</strong> Denemeyi başlattığında ya da abone olduğunda ödemeyi Stripe alır. Biz Stripe
               müşteri numaranı, planını, abonelik durumunu (deneme, aktif, iptal edildi gibi) ve deneme ile yenileme
-              tarihlerini saklarız. Kart numaranın tamamı bize hiçbir zaman gelmez ve bizde saklanmaz.
+              tarihlerini saklarız. Kart numaranın tamamı bize hiçbir zaman gelmez ve bizde saklanmaz. Aboneliğini
+              uygulamadaki profilinden istediğin zaman iptal edebilirsin. İptal ettiğinde erişimin hemen sona erer ve
+              kalan günler için iade yapılmaz; ücretsiz deneme sırasında iptal edersen hiçbir ücret ödemezsin.
             </li>
             <li>
               <strong>Uygulamada kaydettiklerin.</strong> Kaydettiğin tasarımlar ve dil, tema gibi ayarların.
             </li>
             <li>
               <strong>Bağlarsan Etsy mağazan.</strong> Kendi Etsy mağazanı bağlarsan, Etsy'nin bize verdiği yalnızca
-              okuma iznini, ilanlarının başlık ve etiketlerini ve ilan başına sipariş tutarlarını saklarız. Ayrıntılar
+              okuma iznini, ilanlarının bilgilerini ve fotoğraflarını ve ilan başına siparişlerini saklarız. Ayrıntılar
               aşağıdaki "Etsy mağazanı bağlamak" bölümünde.
             </li>
             <li>
@@ -220,7 +242,7 @@
             </li>
             <li>
               <strong>Teknik kayıtlar.</strong> Hizmeti güvenli ve çalışır tutmak için standart sunucu kayıtları (IP adresi,
-              saat, istenen sayfa gibi).
+              saat, istenen sayfa gibi). Siteyi sana ulaştıran ağ sağlayıcımız Cloudflare da aynı teknik verileri görür.
             </li>
             <li>
               <strong>Herkese açık Etsy ilan verileri.</strong> Etsy aramasında görünen ilanların başlığı, görseli, fiyatı,
@@ -255,8 +277,10 @@
           <p><strong>Neleri saklıyoruz:</strong></p>
           <ul>
             <li>Mağaza adın ve Etsy'nin bize verdiği okuma izni; sunucularımızda güvenli şekilde tutulur.</li>
-            <li>Günlük marka taramasını yapabilmek için ilanlarının başlık ve etiketleri.</li>
-            <li>Satış özetin için ilan başına sipariş sayısı, satılan adet, sipariş tutarları ve tarihleri.</li>
+            <li>Günlük marka taramasını yapabilmek ve ilanlarını gösterebilmek için ilanlarının başlık, etiket, açıklama,
+              fiyat, stok adedi, SKU, fotoğraf ve durum bilgileri.</li>
+            <li>Satış özetin için sipariş başına Etsy sipariş numarası, tarih, ödeme durumu, para birimi, ilan başına adet
+              ve tutar ile alıcının ülkesi (ad ya da adres değil).</li>
           </ul>
           <p>
             Alıcılarının adını, adresini, e-postasını ya da mesajlarını saklamayız. Mağazanın rakamları yalnızca kendi
@@ -279,7 +303,15 @@
 
           <h2>Kimlerle paylaşıyoruz</h2>
           <ul>
-            <li><strong>Amazon Web Services</strong>: barındırma, veritabanları ve giriş (Amazon Cognito).</li>
+            <li><strong>Amazon Web Services</strong>: barındırma, veritabanları, yedekler ve giriş (Amazon Cognito).</li>
+            <li>
+              <strong>Cloudflare</strong>: web sitelerimizi sana ulaştırır ve korur. Tüm ziyaretler Cloudflare ağından
+              geçer; Cloudflare IP adresini ve istek bilgilerini işler.
+            </li>
+            <li>
+              <strong>Google Fonts</strong>: sayfalarımız Inter Tight yazı tipini Google sunucularından yükler; bu yüzden
+              bir sayfa açıldığında tarayıcın IP adresini Google'a gönderir.
+            </li>
             <li>
               <strong>Stripe</strong>: ödemeler, makbuzlar ve faturalar. Stripe kart bilgilerini kendi
               <a class="text-link" href="https://stripe.com/privacy" rel="noopener">gizlilik politikasına</a> göre işler.
@@ -291,8 +323,15 @@
           <h2>Ne kadar süre saklıyoruz</h2>
           <p>
             Hesap verileri: hesabın açık olduğu sürece; kapatmamızı istediğinde silinir. Ödeme kayıtları: vergi
-            mevzuatının gerektirdiği süre kadar. Sunucu kayıtları: güvenlik için kısa bir süre. Herkese açık ilan verileri:
-            hizmeti yürütmek için gerektiği ve Etsy kurallarının izin verdiği sürece.
+            mevzuatının gerektirdiği süre kadar. Sunucu kayıtları: güvenlik için kısa bir süre. Yedekler: en fazla 31 gün.
+            Herkese açık ilan verileri: hizmeti yürütmek için gerektiği ve Etsy kurallarının izin verdiği sürece.
+          </p>
+          <p>
+            <strong>Hesabını kapatmak:</strong> hesabının e-posta adresinden
+            <a class="text-link" href="mailto:hello@printmomentum.com">hello@printmomentum.com</a> adresine yaz.
+            Varsa aboneliğini iptal eder, Etsy bağlantısını kaldırır; kaydettiğin tasarımları, mağaza ilanlarını, satış
+            verilerini ve giriş hesabını genellikle 30 gün içinde sileriz. Vergi mevzuatı gereği saklamamız gereken ödeme
+            kayıtları Stripe'ta ve muhasebemizde kalır; yedeklerdeki kopyalar 31 gün içinde kaybolur.
           </p>
 
           <h2>Hakların</h2>
@@ -337,7 +376,7 @@
         <p class="footer-copy">© <span id="year">2026</span> PrintMomentum</p>
       </div>
     </footer>
-    <script src="/i18n.js?v=20261005-1"></script>
-    <script src="/script.js?v=20261005-1"></script>
+    <script src="/i18n.js?v=20261006-1"></script>
+    <script src="/script.js?v=20261006-1"></script>
   </body>
 </html>
