@@ -194,7 +194,7 @@ window.PM_I18N = {
       'You create an account and add a card. Nothing is charged for 7 days, and if you cancel during the trial you pay nothing. If you do not cancel, the $29 monthly plan starts when the trial ends.',
     'faq.q7': 'Can I cancel anytime?',
     'faq.a7':
-      'Yes. Open your profile in the app and cancel your subscription there, any time. Cancelling ends your access right away, and there is no refund for the remaining days of the month you already paid for. If you cancel during the free trial, it costs nothing.',
+      'Yes. Open your profile in the app and cancel your subscription there, any time. You keep access until the end of the period you already paid for, and you are not charged again. There are no partial refunds. Need a break instead? You can pause for 1 or 2 months. If you cancel during the free trial, it costs nothing.',
     'faq.q8': 'How is payment taken?',
     'faq.a8':
       'Payments go through Stripe, a widely used payment provider. Your card details go straight to Stripe; we never see or store your card number. You get a receipt by email after each payment.',
@@ -495,7 +495,7 @@ window.PM_I18N = {
       'Hesap oluşturup kart eklersin. 7 gün boyunca hiçbir ücret alınmaz; deneme sırasında iptal edersen hiçbir şey ödemezsin. İptal etmezsen deneme bitince aylık $29’luk plan başlar.',
     'faq.q7': 'İstediğim zaman iptal edebilir miyim?',
     'faq.a7':
-      'Evet. Uygulamada profilini aç ve aboneliğini oradan istediğin zaman iptal et. İptal ettiğinde erişimin hemen sona erer; ödediğin ayın kalan günleri için iade yapılmaz. Ücretsiz deneme sırasında iptal edersen hiçbir ücret ödemezsin.',
+      'Evet. Uygulamada profilini aç ve aboneliğini oradan istediğin zaman iptal et. Ödediğin dönemin sonuna kadar erişimin devam eder ve senden tekrar ücret alınmaz. Kısmi iade yapılmaz. Ara vermek mi istiyorsun? 1 ya da 2 ay duraklatabilirsin. Ücretsiz deneme sırasında iptal edersen hiçbir ücret ödemezsin.',
     'faq.q8': 'Ödeme nasıl alınıyor?',
     'faq.a8':
       'Ödemeler, yaygın kullanılan bir ödeme hizmeti olan Stripe üzerinden alınır. Kart bilgilerin doğrudan Stripe’a gider; kart numaranı biz görmeyiz ve saklamayız. Her ödemeden sonra e-postana makbuz gelir.',
