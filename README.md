@@ -13,7 +13,7 @@ Open `http://localhost:4173` (Turkish: `http://localhost:4173/tr/`).
 Check translations (EN/TR key parity and every key used in the pages exists):
 
 ```bash
-node scripts/build-pages.mjs        # after editing i18n.js or index.html: refreshes index.html (EN text) and tr/index.html
+node scripts/build-pages.mjs        # after editing i18n.js or a page template: refreshes the EN pages and their tr/ copies (list: PAGES in the script)
 node scripts/check-i18n.mjs && node scripts/build-pages.mjs --check && node --check script.js
 ```
 
@@ -29,6 +29,8 @@ Production path on the box: `/opt/printmomentum/landing` (served by Caddy on `pr
 
 - `index.html` — main landing (EN/TR, dark mode): hero with the rising designs list, rising designs (speed score 0–100), your shop (Etsy connection, trademark risk scan, sales overview), pricing, FAQ; live "products tracked" line from `/api/v1/health` with a plain fallback. Product mocks are plain HTML/CSS with made-up data.
 - `tr/index.html` — Turkish home page, **generated** by `scripts/build-pages.mjs` (do not edit by hand)
+- `how-we-measure/index.html` — "How we measure momentum": signals behind the speed score, what "Momentum Leader" / "Fast Mover" mean (our own measurement), limits. Linked from the footer and from the app's metric help. Turkish copy at `tr/how-we-measure/index.html` (generated).
+- `trademark-check/index.html` + `phrase-check.js` — free phrase risk check, no sign-up. Calls `GET /api/v1/public/phrase-check?q=` on the same origin (Caddy proxies `/api`), which checks only our own trademark watchlist (never Etsy data), rate-limited per IP. Turkish copy at `tr/trademark-check/index.html` (generated). Public URLs must not contain "etsy".
 - `404.html` — error page (EN + TR), served by Caddy for unknown paths
 - `theme-init.js` — sets the theme before first paint (external so the CSP needs no inline scripts)
 - `privacy.html`, `terms.html` — legal pages, full EN and TR versions side by side (DRAFT, pending legal review)

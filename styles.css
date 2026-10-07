@@ -1456,3 +1456,162 @@ html[data-theme="dark"] .shop-avatar {
     white-space: nowrap;
   }
 }
+
+/* Info pages: /how-we-measure/ and /trademark-check/ (EN + /tr/) */
+
+.hero-phrase {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.info-page .kicker {
+  margin-bottom: 10px;
+}
+
+.info-lede {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.label-defs {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.label-defs > div {
+  padding: 14px 16px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.label-defs dt .chip {
+  margin-top: 0;
+  font-size: 13px;
+}
+
+.label-defs dd {
+  margin: 8px 0 0;
+  color: var(--ink-2);
+}
+
+.info-cta {
+  margin-top: 48px;
+  padding: 24px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+}
+
+.legal-page .info-cta h2 {
+  margin-top: 0;
+}
+
+.info-cta .hero-actions {
+  align-items: center;
+  margin-top: 18px;
+}
+
+.phrase-form {
+  margin-top: 28px;
+}
+
+.phrase-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.phrase-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.phrase-input {
+  flex: 1 1 260px;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.phrase-input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 0;
+}
+
+.phrase-row .button {
+  min-height: 46px;
+}
+
+.phrase-row .button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.phrase-result {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.phrase-verdict-title .chip {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.phrase-verdict.is-none .chip {
+  border: 1px solid var(--hair);
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+
+.legal-page .phrase-matches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-page .phrase-matches li {
+  margin: 0;
+}
+
+.phrase-matches mark {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--warn-mark);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.phrase-error {
+  color: var(--warn);
+  font-weight: 500;
+}
+
+.legal-page .phrase-legal,
+.legal-page .phrase-legal-static {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.legal-page .label-defs + p {
+  margin-top: 14px;
+}
