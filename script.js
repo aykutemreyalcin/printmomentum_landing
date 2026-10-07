@@ -29,13 +29,26 @@ function langFromUrl() {
   }
 }
 
-// The home page exists as two static pages: / (English) and /tr/ (Turkish).
+// Some pages exist as two static files, English at /x/ and Turkish at /tr/x/ (body[data-static-lang]):
+// the home page, /how-we-measure/ and /trademark-check/. Their hreflang links name the other version.
 const HOME_PATHS = { en: '/', tr: '/tr/' }
-const isHome = () => document.body?.dataset.page === 'home'
+const isStaticLangPage = () => Boolean(document.body?.hasAttribute('data-static-lang'))
 
 function langFromPath() {
-  if (!isHome()) return null
+  if (!isStaticLangPage()) return null
   return window.location.pathname.startsWith('/tr/') || window.location.pathname === '/tr' ? 'tr' : 'en'
+}
+
+function pathForLang(locale) {
+  const link = document.querySelector(`link[rel="alternate"][hreflang="${locale}"]`)
+  if (link) {
+    try {
+      return new URL(link.getAttribute('href'), window.location.href).pathname
+    } catch {
+      /* fall through */
+    }
+  }
+  return HOME_PATHS[locale]
 }
 
 function detectLang() {
@@ -109,20 +122,20 @@ function applyI18n(locale) {
   })
 }
 
-// Old ?lang= links to the home page go to the static page for that language.
+// Old ?lang= links to a static-language page go to the static page for that language.
 function redirectOldLangUrl() {
   const fromUrl = langFromUrl()
-  if (!isHome() || !fromUrl) return false
-  const target = HOME_PATHS[fromUrl]
+  if (!isStaticLangPage() || !fromUrl) return false
+  const target = pathForLang(fromUrl)
   if (window.location.pathname === target) return false
   window.location.replace(`${target}${window.location.hash}`)
   return true
 }
 
-// On the home page, switching language opens the other static page; elsewhere it switches in place.
+// On static-language pages, switching language opens the other static page; elsewhere it switches in place.
 function goToLang(locale) {
-  if (!isHome()) return false
-  const target = HOME_PATHS[locale]
+  if (!isStaticLangPage()) return false
+  const target = pathForLang(locale)
   if (langFromPath() === locale && window.location.pathname === target) return false
   window.location.assign(`${target}${window.location.hash}`)
   return true

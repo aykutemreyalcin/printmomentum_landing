@@ -2,17 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://printmomentum.com/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://printmomentum.com/" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://printmomentum.com/tr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://printmomentum.com/" />
   </url>
   <url>
     <loc>https://printmomentum.com/tr/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://printmomentum.com/" />
     <xhtml:link rel="alternate" hreflang="tr" href="https://printmomentum.com/tr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://printmomentum.com/" />
+  </url>
+  <url>
+    <loc>https://printmomentum.com/how-we-measure/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://printmomentum.com/how-we-measure/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://printmomentum.com/tr/how-we-measure/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://printmomentum.com/how-we-measure/" />
+  </url>
+  <url>
+    <loc>https://printmomentum.com/tr/how-we-measure/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://printmomentum.com/how-we-measure/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://printmomentum.com/tr/how-we-measure/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://printmomentum.com/how-we-measure/" />
+  </url>
+  <url>
+    <loc>https://printmomentum.com/trademark-check/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://printmomentum.com/trademark-check/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://printmomentum.com/tr/trademark-check/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://printmomentum.com/trademark-check/" />
+  </url>
+  <url>
+    <loc>https://printmomentum.com/tr/trademark-check/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://printmomentum.com/trademark-check/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://printmomentum.com/tr/trademark-check/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://printmomentum.com/trademark-check/" />
   </url>
   <url>
     <loc>https://printmomentum.com/privacy.html</loc>

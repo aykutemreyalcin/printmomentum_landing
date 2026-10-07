@@ -20,16 +20,18 @@ for (const [lang, dict] of Object.entries({ en, tr })) {
 }
 
 const used = new Set()
-for (const page of ['index.html', 'privacy.html', 'terms.html']) {
+for (const page of ['index.html', 'how-we-measure/index.html', 'trademark-check/index.html', 'privacy.html', 'terms.html']) {
   const html = readFileSync(join(root, page), 'utf8')
   for (const m of html.matchAll(/data-i18n(?:-mark)?="([^"]+)"/g)) used.add(m[1])
   for (const m of html.matchAll(/data-i18n-attr="([^"]+)"/g)) {
     for (const spec of m[1].split(';')) used.add(spec.split(':')[1].trim())
   }
 }
-// Keys referenced from script.js as quoted 'group.name' strings
-for (const m of readFileSync(join(root, 'script.js'), 'utf8').matchAll(/'([a-z]+\.[a-zA-Z0-9.]+)'/g)) {
-  if (m[1] in en) used.add(m[1])
+// Keys referenced from scripts as quoted 'group.name' strings
+for (const script of ['script.js', 'phrase-check.js']) {
+  for (const m of readFileSync(join(root, script), 'utf8').matchAll(/'([a-z]+\.[a-zA-Z0-9.]+)'/g)) {
+    if (m[1] in en) used.add(m[1])
+  }
 }
 for (const key of used) if (!(key in en)) problems.push(`used but not defined: ${key}`)
 for (const key of Object.keys(en)) if (!used.has(key)) problems.push(`defined but unused: ${key}`)
