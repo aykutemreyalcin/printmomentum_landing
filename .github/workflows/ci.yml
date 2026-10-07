@@ -1,6 +1,7 @@
 name: ci
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
@@ -14,24 +15,50 @@ env:
   EC2_INSTANCE_ID: i-0a6c1950651c0bc11
 
 jobs:
-  deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Translations, generated pages, script syntax
+        run: |
+          node scripts/check-i18n.mjs
+          node scripts/build-pages.mjs --check
+          node --check script.js
+          node --check theme-init.js
+          node --check i18n.js
+
+  deploy:
+    needs: check
+    # Push to main, or a manual run on main (re-deploy without a commit).
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Upload landing to S3
         run: |
-          aws s3 sync . "s3://${AWS_S3_BUCKET}/host/landing/" \
+          set -euo pipefail
+          # --delete: files removed from the repo also disappear from S3 (and so from the box,
+          # whose sync below also uses --delete). Excluded paths are never uploaded.
+          aws s3 sync . "s3://${AWS_S3_BUCKET}/host/landing/" --delete \
             --exclude ".git/*" \
             --exclude ".github/*" \
+            --exclude ".gitignore" \
             --exclude "README.md" \
-            --exclude "scripts/*"
+            --exclude "scripts/*" \
+            --exclude "favicon.png" \
+            --exclude "pm-logo.png"
+          # Large source images (720 KB each, unreferenced) are kept in the repo only.
+          aws s3 rm "s3://${AWS_S3_BUCKET}/host/landing/favicon.png" --only-show-errors || true
+          aws s3 rm "s3://${AWS_S3_BUCKET}/host/landing/pm-logo.png" --only-show-errors || true
       - name: Sync landing on EC2
         run: |
           set -euo pipefail
@@ -57,9 +84,31 @@ jobs:
               --instance-id "${{ env.EC2_INSTANCE_ID }}" \
               --query Status --output text)
             if [ "$STATUS" = "Success" ]; then exit 0; fi
-            if [ "$STATUS" = "Failed" ] || [ "$STATUS" = "Cancelled" ] || [ "$STATUS" = "TimedOut" ]; then exit 1; fi
+            if [ "$STATUS" = "Failed" ] || [ "$STATUS" = "Cancelled" ] || [ "$STATUS" = "TimedOut" ]; then
+              aws ssm get-command-invocation \
+                --command-id "$CMD_ID" \
+                --instance-id "${{ env.EC2_INSTANCE_ID }}" \
+                --output json
+              exit 1
+            fi
             sleep 5
           done
+          echo "SSM command timed out waiting for completion"
           exit 1
-      - name: Verify public landing
-        run: curl -sf -o /dev/null "https://printmomentum.com/"
+      - name: Verify live landing matches this commit
+        run: |
+          set -euo pipefail
+          want=$(sha256sum i18n.js | cut -d' ' -f1)
+          for i in $(seq 1 12); do
+            # A unique query string skips the Cloudflare cache.
+            got=$(curl -sf "https://printmomentum.com/i18n.js?deploy=${GITHUB_SHA}-${i}" | sha256sum | cut -d' ' -f1 || true)
+            if [ "$got" = "$want" ]; then
+              curl -sf -o /dev/null "https://printmomentum.com/"
+              curl -sf -o /dev/null "https://printmomentum.com/tr/"
+              echo "Live i18n.js matches ${GITHUB_SHA} (sha256 ${want})."
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Live i18n.js (sha256 ${got:-none}) does not match this commit (sha256 ${want})."
+          exit 1
