@@ -33,6 +33,6 @@ Production path on the box: `/opt/printmomentum/landing` (served by Caddy on `pr
 - `theme-init.js` — sets the theme before first paint (external so the CSP needs no inline scripts)
 - `privacy.html`, `terms.html` — legal pages, full EN and TR versions side by side (DRAFT, pending legal review)
 - `i18n.js` — translations (every key must exist in both `en` and `tr`)
-- `script.js` — language (`/tr/` path, then `?lang=`, saved choice, browser; the language toggle on the home page opens `/` or `/tr/`), theme, health stats
+- `script.js` — language (`/tr/` path, then `?lang=`, saved choice, browser; the language toggle on the home page opens `/` or `/tr/`), theme, health stats, campaign pass-through (links to the app carry the visit's `utm_*` and an external referrer host as `ref`; tab-only sessionStorage, no cookies)
 - `og-image.png` — social sharing image (1200×630)
 - `pm-logo-64.png` (header/footer logo, 2× for 28px), `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` — small variants cut from `pm-logo.png` (1024px original, kept as the source)

@@ -201,6 +201,70 @@ function initNav() {
   })
 }
 
+// Campaign pass-through (first-party, no cookies): links to the app carry this visit's utm_* values and, when
+// the visitor came from another site, that site's host as `ref`, so the app can record where sign-ups come from.
+// Kept for this tab only (sessionStorage); nothing is sent anywhere by this page.
+const APP_ORIGIN = 'https://app.printmomentum.com'
+const STORAGE_CAMPAIGN = 'printmomentum-landing-campaign'
+const CAMPAIGN_KEYS = ['utm_source', 'utm_medium', 'utm_campaign']
+
+function readCampaign() {
+  try {
+    const stored = JSON.parse(window.sessionStorage.getItem(STORAGE_CAMPAIGN) || 'null')
+    if (stored && typeof stored === 'object') return stored
+  } catch {
+    /* storage unavailable or bad value */
+  }
+  return null
+}
+
+function referrerHost() {
+  try {
+    if (!document.referrer) return null
+    const host = new URL(document.referrer).hostname.toLowerCase()
+    if (host === window.location.hostname || host.endsWith('printmomentum.com')) return null
+    return host.startsWith('www.') ? host.slice(4) : host
+  } catch {
+    return null
+  }
+}
+
+function currentCampaign() {
+  const stored = readCampaign()
+  if (stored) return stored // first page of the visit wins
+  const params = new URLSearchParams(window.location.search)
+  const campaign = {}
+  CAMPAIGN_KEYS.forEach((key) => {
+    const value = (params.get(key) || '').trim().slice(0, 150)
+    if (value) campaign[key] = value
+  })
+  const ref = referrerHost()
+  if (ref) campaign.ref = ref
+  if (!Object.keys(campaign).length) return null
+  try {
+    window.sessionStorage.setItem(STORAGE_CAMPAIGN, JSON.stringify(campaign))
+  } catch {
+    /* not remembered across pages; the current page still passes it on */
+  }
+  return campaign
+}
+
+function passCampaignToApp() {
+  const campaign = currentCampaign()
+  if (!campaign) return
+  document.querySelectorAll(`a[href^="${APP_ORIGIN}"]`).forEach((link) => {
+    try {
+      const url = new URL(link.getAttribute('href'))
+      Object.entries(campaign).forEach(([key, value]) => {
+        if (!url.searchParams.has(key)) url.searchParams.set(key, value)
+      })
+      link.setAttribute('href', url.toString())
+    } catch {
+      /* leave the link as it is */
+    }
+  })
+}
+
 function boot() {
   const yearEl = document.getElementById('year')
   if (yearEl) yearEl.textContent = String(new Date().getFullYear())
@@ -226,6 +290,7 @@ function boot() {
   })
 
   initNav()
+  passCampaignToApp()
   loadHealth()
 }
 
