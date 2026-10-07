@@ -4,7 +4,7 @@ window.PM_I18N = {
   en: {
     'meta.title': 'PrintMomentum · trademark risk scan and rising t-shirt designs for Etsy sellers',
     'meta.description':
-      'For Etsy t-shirt sellers: see which of your listings carry trademark risk in 60 seconds, through the official Etsy API with no browser extension. Plus the t-shirt designs rising fastest right now. 7-day free trial.',
+      'For Etsy t-shirt sellers: see which of your listings carry trademark risk in 60 seconds, through the official Etsy API with no browser extension. Plus the t-shirt designs rising fastest right now. 14 days of Pro free, no card needed.',
     'meta.ogAlt': 'PrintMomentum: scan your Etsy shop for trademark risk and find rising t-shirt designs.',
     'brand.home': 'PrintMomentum home',
     'nav.skip': 'Skip to content',
@@ -28,9 +28,9 @@ window.PM_I18N = {
     'hero.title': 'See which of your listings carry trademark risk in 60 seconds.',
     'hero.lede':
       'Official API, no extension. Connect your Etsy shop through Etsy’s own sign-in and we check every title and tag for protected names, then keep checking every day. You also get the t-shirt designs climbing Etsy search fastest, with a speed score from 0 to 100.',
-    'hero.ctaPrimary': 'Start 7-day free trial',
+    'hero.ctaPrimary': 'Start free: 14 days of Pro',
     'hero.ctaSecondary': 'Sign in',
-    'hero.note': 'Then $29/month, tax included. Cancel anytime.',
+    'hero.note': 'No card needed. Then a free plan, or Pro for $29/month, tax included.',
     'hero.phraseLink': 'Or check one phrase free, no sign-up',
 
     'stats.line': '{count}+ products tracked, updated 6 times a day',
@@ -159,7 +159,7 @@ window.PM_I18N = {
     'sales.best3': '19 sold · $494',
 
     'pricing.title': 'One plan, everything included',
-    'pricing.copy': 'Try everything free for 7 days. No feature is held back.',
+    'pricing.copy': 'Every new account gets 14 days of full Pro, no card needed. After that you keep a free plan, or go Pro.',
     'pricing.plan': 'PrintMomentum Pro',
     'pricing.price': '$29',
     'pricing.per': '/ month',
@@ -170,9 +170,9 @@ window.PM_I18N = {
     'pricing.b4': 'Your orders, units and revenue for 7, 30 or 90 days',
     'pricing.b5': 'Niche opportunities and CSV download',
     'pricing.b6': 'Cancel anytime from your profile',
-    'pricing.cta': 'Start 7-day free trial',
+    'pricing.cta': 'Start free: 14 days of Pro',
     'pricing.note':
-      'You add a card to start the trial. Cancel before the 7 days are over and you pay nothing. Payments are handled by Stripe.',
+      'Or $199 a year (save 43%). Founding Member: $19 a month or $149 a year for our first 50 members, price fixed for 12 months. Payments are handled by Stripe.',
 
     'faq.title': 'Questions',
     'faq.q1': 'What is PrintMomentum?',
@@ -188,10 +188,10 @@ window.PM_I18N = {
     'faq.a4': 'Rising designs: 6 times a day. Your own shop: the trademark scan runs every day, and your sales are refreshed several times a day.',
     'faq.q5': 'How much does it cost?',
     'faq.a5':
-      'PrintMomentum Pro is $29 a month, tax included. There is one plan with every feature. The first 7 days are free.',
+      'PrintMomentum Pro is $29 a month or $199 a year, tax included, with every feature. Our first 50 members can join as Founding Members for $19 a month or $149 a year, with the price fixed for 12 months. There is also a free plan.',
     'faq.q6': 'How does the free trial work?',
     'faq.a6':
-      'You create an account and add a card. Nothing is charged for 7 days, and if you cancel during the trial you pay nothing. If you do not cancel, the $29 monthly plan starts when the trial ends.',
+      'Create an account and you get 14 days of full Pro. No card needed, nothing is charged. When the 14 days end you move to the free plan automatically: you still see your shop’s trademark risk count and the top 5 designs of each niche. Upgrade to Pro whenever you want the full details.',
     'faq.q7': 'Can I cancel anytime?',
     'faq.a7':
       'Yes. Open your profile in the app and cancel your subscription there, any time. You keep access until the end of the period you already paid for, and you are not charged again. There are no partial refunds. Need a break instead? You can pause for 1 or 2 months. If you cancel during the free trial, it costs nothing.',
@@ -305,7 +305,7 @@ window.PM_I18N = {
   tr: {
     'meta.title': 'PrintMomentum · Etsy satıcıları için marka riski taraması ve yükselen tişört tasarımları',
     'meta.description':
-      'Etsy’de tişört satanlar için: mağazandaki hangi ilanların marka riski taşıdığını 60 saniyede gör. Resmi Etsy API’si, tarayıcı eklentisi yok. Ayrıca şu an en hızlı yükselen tişört tasarımları. 7 gün ücretsiz dene.',
+      'Etsy’de tişört satanlar için: mağazandaki hangi ilanların marka riski taşıdığını 60 saniyede gör. Resmi Etsy API’si, tarayıcı eklentisi yok. Ayrıca şu an en hızlı yükselen tişört tasarımları. 14 gün Pro ücretsiz, kart gerekmez.',
     'meta.ogAlt': 'PrintMomentum: Etsy mağazanı marka riskine karşı tara, yükselen tişört tasarımlarını bul.',
     'brand.home': 'PrintMomentum ana sayfa',
     'nav.skip': 'İçeriğe geç',
@@ -329,9 +329,9 @@ window.PM_I18N = {
     'hero.title': 'Mağazandaki marka riskli ilanları 60 saniyede gör.',
     'hero.lede':
       'Resmi API, eklenti yok. Etsy mağazanı Etsy’nin kendi giriş sayfasından bağla; her başlığı ve etiketi korunan isimlere karşı kontrol edelim, sonra her gün yeniden bakalım. Ayrıca Etsy aramasında en hızlı yükselen tişört tasarımlarını 0–100 arası hız puanıyla görürsün.',
-    'hero.ctaPrimary': '7 gün ücretsiz dene',
+    'hero.ctaPrimary': 'Ücretsiz başla: 14 gün Pro',
     'hero.ctaSecondary': 'Giriş yap',
-    'hero.note': 'Sonra aylık $29, vergiler dahil. İstediğin zaman iptal et.',
+    'hero.note': 'Kart gerekmez. Sonra ücretsiz plan ya da aylık $29’a Pro, vergiler dahil.',
     'hero.phraseLink': 'Ya da tek bir ifadeyi kayıt olmadan ücretsiz kontrol et',
 
     'stats.line': '{count}+ ürün takip ediliyor, günde 6 kez güncelleniyor',
@@ -460,7 +460,7 @@ window.PM_I18N = {
     'sales.best3': '19 adet · $494',
 
     'pricing.title': 'Tek plan, her şey dahil',
-    'pricing.copy': 'Tüm özellikleri 7 gün ücretsiz dene. Hiçbir özellik kilitli değil.',
+    'pricing.copy': 'Her yeni hesap 14 gün tam Pro alır, kart gerekmez. Sonrasında ücretsiz planda kalırsın ya da Pro’ya geçersin.',
     'pricing.plan': 'PrintMomentum Pro',
     'pricing.price': '$29',
     'pricing.per': '/ ay',
@@ -471,9 +471,9 @@ window.PM_I18N = {
     'pricing.b4': '7, 30 ya da 90 günlük sipariş, adet ve gelirin',
     'pricing.b5': 'Niş fırsatları ve CSV indirme',
     'pricing.b6': 'Profilinden istediğin zaman iptal et',
-    'pricing.cta': '7 gün ücretsiz dene',
+    'pricing.cta': 'Ücretsiz başla: 14 gün Pro',
     'pricing.note':
-      'Denemeyi başlatmak için kart eklersin. 7 gün dolmadan iptal edersen hiçbir ücret ödemezsin. Ödemeler Stripe üzerinden alınır.',
+      'Ya da yıllık $199 (%43 tasarruf). Kurucu Üye: ilk 50 üyemize aylık $19 veya yıllık $149, fiyat 12 ay sabit. Ödemeler Stripe üzerinden alınır.',
 
     'faq.title': 'Sorular',
     'faq.q1': 'PrintMomentum nedir?',
@@ -489,10 +489,10 @@ window.PM_I18N = {
     'faq.a4': 'Yükselen tasarımlar günde 6 kez. Kendi mağazanda marka taraması her gün yapılır, satışların gün içinde birkaç kez yenilenir.',
     'faq.q5': 'Ücreti ne kadar?',
     'faq.a5':
-      'PrintMomentum Pro aylık $29, vergiler dahil. Tüm özellikleri içeren tek bir plan var. İlk 7 gün ücretsiz.',
+      'PrintMomentum Pro aylık $29 ya da yıllık $199, vergiler dahil, tüm özelliklerle. İlk 50 üyemiz Kurucu Üye olarak aylık $19 ya da yıllık $149’a katılabilir; fiyat 12 ay sabit. Ayrıca ücretsiz bir plan da var.',
     'faq.q6': 'Ücretsiz deneme nasıl işliyor?',
     'faq.a6':
-      'Hesap oluşturup kart eklersin. 7 gün boyunca hiçbir ücret alınmaz; deneme sırasında iptal edersen hiçbir şey ödemezsin. İptal etmezsen deneme bitince aylık $29’luk plan başlar.',
+      'Hesap oluşturduğunda 14 gün tam Pro alırsın. Kart gerekmez, hiçbir ücret alınmaz. 14 gün bitince otomatik olarak ücretsiz plana geçersin: mağazandaki marka riski sayısını ve her nişin ilk 5 tasarımını görmeye devam edersin. Tüm detaylar için istediğin zaman Pro’ya geçebilirsin.',
     'faq.q7': 'İstediğim zaman iptal edebilir miyim?',
     'faq.a7':
       'Evet. Uygulamada profilini aç ve aboneliğini oradan istediğin zaman iptal et. Ödediğin dönemin sonuna kadar erişimin devam eder ve senden tekrar ücret alınmaz. Kısmi iade yapılmaz. Ara vermek mi istiyorsun? 1 ya da 2 ay duraklatabilirsin. Ücretsiz deneme sırasında iptal edersen hiçbir ücret ödemezsin.',
@@ -504,7 +504,7 @@ window.PM_I18N = {
       'Bir başlıkta ya da etikette bilinen bir marka, spor takımı, karakter ya da ünlü adı geçiyorsa bunu işaretliyoruz: listedeki yükselen tasarımlarda ve mağazanı bağlarsan kendi ilanlarında. Böyle tasarımları satmak ilanının kaldırılmasına ya da mağazanın kapatılmasına yol açabilir. Uyarı yardımcı bir işarettir, hukuki görüş değildir; mutlaka kendin de kontrol et.',
     'faq.q10': 'Nasıl giriş yaparım?',
     'faq.a10':
-      'Hesabını ücretsiz denemeyi başlatırken oluşturursun, sonra e-posta ve şifrenle giriş yaparsın. Güvenli giriş sayfası şimdilik İngilizce.',
+      'Hesabını ilk girişte oluşturursun (14 gün Pro ücretsiz başlar), sonra e-posta ve şifrenle giriş yaparsın. Güvenli giriş sayfası şimdilik İngilizce.',
     'faq.q11': 'PrintMomentum Etsy’nin bir parçası mı?',
     'faq.a11':
       'Hayır. PrintMomentum bağımsızdır; Etsy, Inc. ile bağlantılı değildir, Etsy tarafından desteklenmez ya da onaylanmaz. Etsy’nin resmi API’sini kullanırız: yükselen tasarımlar için herkese açık ilan verilerini, kendi mağazan içinse yalnızca bağlarsan senin verilerini.',
