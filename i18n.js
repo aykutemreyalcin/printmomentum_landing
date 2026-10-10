@@ -300,6 +300,9 @@ window.PM_I18N = {
     'check.ctaTitle': 'Check every listing in your shop at once',
     'check.ctaBody': 'Connect your Etsy shop through Etsy’s official sign-in (read-only). We check all your titles and tags in about a minute and keep checking every day.',
     'check.ctaButton': 'Scan your whole store free',
+    'tg.title': 'Free trademark trap alert every week',
+    'tg.body': 'Our Turkish-language Telegram channel for t-shirt sellers on Etsy: weekly trademark traps, rising niches, Q4 tips.',
+    'tg.button': 'Join the Telegram channel',
     'check.methodLink': 'How we measure momentum',
   },
   tr: {
@@ -601,6 +604,9 @@ window.PM_I18N = {
     'check.ctaTitle': 'Mağazandaki tüm ilanları tek seferde kontrol et',
     'check.ctaBody': 'Etsy mağazanı Etsy’nin resmi giriş sayfasından bağla (yalnızca okuma izni). Tüm başlık ve etiketlerini yaklaşık bir dakikada kontrol eder, sonra her gün yeniden bakarız.',
     'check.ctaButton': 'Tüm mağazanı ücretsiz tara',
+    'tg.title': 'Her hafta ücretsiz marka tuzağı uyarısı',
+    'tg.body': 'Etsy’de tişört satanlar için Türkçe Telegram kanalımız: haftalık marka tuzağı, yükselen nişler, Q4 ipuçları.',
+    'tg.button': 'Telegram kanalına katıl',
     'check.methodLink': 'Momentumu nasıl ölçüyoruz',
   },
 }

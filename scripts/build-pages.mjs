@@ -95,6 +95,8 @@ function toTurkish(html, path) {
     if (page.path === '/') continue
     html = html.replaceAll(`href="${page.path}`, `href="/tr${page.path}`)
   }
+  // Turkish-only blocks (data-lang-section="tr") ship hidden in the English page and visible here.
+  html = html.replaceAll('data-lang-section="tr" hidden', 'data-lang-section="tr"')
   return html
     .replaceAll('href="/privacy.html"', 'href="/privacy.html?lang=tr"')
     .replaceAll('href="/terms.html"', 'href="/terms.html?lang=tr"')

@@ -1514,6 +1514,34 @@ html[data-theme="dark"] .shop-avatar {
   margin-top: 18px;
 }
 
+/* Telegram channel box (Turkish pages only) */
+
+.tg-section {
+  padding: clamp(48px, 7vw, 80px) 0;
+}
+
+.tg-cta {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.tg-section-inline .tg-cta {
+  margin-top: 32px;
+}
+
+.info-cta .tg-cta-title {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.tg-cta p {
+  color: var(--ink-2);
+}
+
+.tg-cta .hero-actions {
+  margin-top: 16px;
+}
+
 .phrase-form {
   margin-top: 28px;
 }
