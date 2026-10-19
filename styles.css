@@ -1620,6 +1620,11 @@ html[data-theme="dark"] .shop-avatar {
   margin: 0;
 }
 
+.phrase-match-type {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
 .phrase-matches mark {
   padding: 2px 8px;
   border-radius: 6px;

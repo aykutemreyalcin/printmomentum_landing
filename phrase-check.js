@@ -1,7 +1,9 @@
 // Free phrase risk check (/trademark-check/ and /tr/trademark-check/).
 // Calls the public API on the same origin (Caddy proxies /api to the API). The API checks the phrase
 // against our own trademark watchlist only, never Etsy data. Text comes from i18n.js; results are
-// built with DOM nodes, never innerHTML.
+// built with DOM nodes, never innerHTML. A name found inside a longer word ("Grinchmas") or through a
+// short form ("Skellington") comes with matchDetails[].matchType 'partial' / 'alias' and gets a small
+// note; older API responses without matchDetails still work (names only).
 ;(function () {
   const ENDPOINT = '/api/v1/public/phrase-check'
   const TIMEOUT_MS = 8000
@@ -27,6 +29,8 @@
     return dicts[lang()]?.[key] ?? dicts.en?.[key] ?? ''
   }
 
+  const TYPE_NOTE = { partial: 'check.matchPartial', alias: 'check.matchAlias' }
+
   function show(state, found) {
     result.hidden = false
     errorEl.hidden = state !== 'error'
@@ -35,11 +39,18 @@
     legal.hidden = state === 'error'
     if (state === 'high') {
       matches.replaceChildren(
-        ...found.map((name) => {
+        ...found.map(({ term, matchType }) => {
           const li = document.createElement('li')
           const mark = document.createElement('mark')
-          mark.textContent = name
+          mark.textContent = term
           li.append(mark)
+          const noteKey = TYPE_NOTE[matchType]
+          if (noteKey) {
+            const note = document.createElement('span')
+            note.className = 'phrase-match-type'
+            note.textContent = text(noteKey)
+            li.append(' ', note)
+          }
           return li
         }),
       )
@@ -55,6 +66,17 @@
     submit.disabled = busy
     submit.textContent = text(busy ? 'check.checking' : 'check.submit')
     form.setAttribute('aria-busy', busy ? 'true' : 'false')
+  }
+
+  function foundNames(body) {
+    if (Array.isArray(body?.matchDetails)) {
+      return body.matchDetails
+        .filter((d) => typeof d?.term === 'string')
+        .map((d) => ({ term: d.term, matchType: typeof d.matchType === 'string' ? d.matchType : 'exact' }))
+    }
+    return Array.isArray(body?.matches)
+      ? body.matches.filter((m) => typeof m === 'string').map((term) => ({ term, matchType: 'exact' }))
+      : []
   }
 
   form.addEventListener('submit', async (event) => {
@@ -78,7 +100,7 @@
       if (response.status === 400) return showError('check.errorEmpty')
       if (!response.ok) return showError('check.errorDown')
       const body = await response.json()
-      const found = Array.isArray(body?.matches) ? body.matches.filter((m) => typeof m === 'string') : []
+      const found = foundNames(body)
       if (body?.risk === 'high' && found.length) show('high', found)
       else if (body?.risk === 'not_found') show('none')
       else showError('check.errorDown')
