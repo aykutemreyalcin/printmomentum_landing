@@ -305,6 +305,9 @@ window.PM_I18N = {
     'tg.title': 'Free trademark trap alert every week',
     'tg.body': 'Our Turkish-language Telegram channel for t-shirt sellers on Etsy: weekly trademark traps, rising niches, Q4 tips.',
     'tg.button': 'Join the Telegram channel',
+    'nl.title': 'One trademark trap + 3 rising niches, every Tuesday',
+    'nl.body': 'The free PrintMomentum Weekly newsletter for Etsy t-shirt sellers. Two minutes to read, unsubscribe any time.',
+    'nl.button': 'Subscribe free',
     'check.methodLink': 'How we measure momentum',
   },
   tr: {
@@ -611,6 +614,9 @@ window.PM_I18N = {
     'tg.title': 'Her hafta ücretsiz marka tuzağı uyarısı',
     'tg.body': 'Etsy’de tişört satanlar için Türkçe Telegram kanalımız: haftalık marka tuzağı, yükselen nişler, Q4 ipuçları.',
     'tg.button': 'Telegram kanalına katıl',
+    'nl.title': 'Her salı 1 marka tuzağı + 3 yükselen niş',
+    'nl.body': 'Etsy’de tişört satanlar için ücretsiz PrintMomentum Weekly bülteni (İngilizce). İki dakikada okunur, istediğin zaman çıkabilirsin.',
+    'nl.button': 'Ücretsiz abone ol',
     'check.methodLink': 'Momentumu nasıl ölçüyoruz',
   },
 }
