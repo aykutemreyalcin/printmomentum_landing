@@ -18,6 +18,7 @@
   const none = document.getElementById('phrase-none')
   const matches = document.getElementById('phrase-matches')
   const legal = document.getElementById('phrase-legal')
+  const next = document.getElementById('phrase-next')
   if (!form || !input || !submit || !result) return
 
   function lang() {
@@ -37,6 +38,7 @@
     high.hidden = state !== 'high'
     none.hidden = state !== 'none'
     legal.hidden = state === 'error'
+    if (next) next.hidden = state === 'error'
     if (state === 'high') {
       matches.replaceChildren(
         ...found.map(({ term, matchType }) => {
