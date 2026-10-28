@@ -69,7 +69,7 @@ jobs:
           print(json.dumps({"commands": [
             "set -euo pipefail",
             "install -d -m 755 /opt/printmomentum/landing",
-            f"aws s3 sync s3://{bucket}/host/landing/ /opt/printmomentum/landing --delete",
+            f"aws s3 sync s3://{bucket}/host/landing/ /opt/printmomentum/landing --delete --exact-timestamps",
           ]}))
           PY
           CMD_ID=$(aws ssm send-command \
