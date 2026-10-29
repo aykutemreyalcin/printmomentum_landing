@@ -38,3 +38,30 @@ Production path on the box: `/opt/printmomentum/landing` (served by Caddy on `pr
 - `script.js` — language (`/tr/` path, then `?lang=`, saved choice, browser; the language toggle on the home page opens `/` or `/tr/`), theme, health stats, campaign pass-through (links to the app carry the visit's `utm_*` and an external referrer host as `ref`; tab-only sessionStorage, no cookies)
 - `og-image.png` — social sharing image (1200×630)
 - `pm-logo-64.png` (header/footer logo, 2× for 28px), `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` — small variants cut from `pm-logo.png` (1024px original, kept as the source)
+
+## Legal pages: draft notes
+
+Kept here, not in the HTML: page source is public (README.md is not deployed, see `.github/workflows/ci.yml`).
+
+### `terms.html`
+
+```text
+DRAFT — plain-language terms of use, written 4 October 2026 for the Cognito + Stripe launch.
+Needs review by a lawyer before it is treated as final: operator legal name/address, governing law,
+consumer withdrawal rights (EU 14-day / Mesafeli Sözleşmeler Yönetmeliği), refund wording, tax wording.
+6 October 2026: cancellation now ends access immediately with no refund for remaining days (owner decision F-008).
+7 October 2026: replaced by owner decision (GROWTH_DECISION 2026-10-07): cancel at the end of the paid period,
+no partial refunds, pause for 1 or 2 months.
+Keep EN and TR versions and the numbers ($29/$199, Founding $19/$149, 14-day no-card Pro) in sync with the app and Stripe settings.
+```
+
+### `privacy.html`
+
+```text
+DRAFT — plain-language privacy policy, written 4 October 2026 for the Cognito + Stripe launch,
+updated 5 October 2026 for the Etsy shop connection (trademark scan + sales overview),
+updated 6 October 2026 (processors Cloudflare + Google Fonts, stored order/listing fields, cancellation, account closure),
+updated 8 October 2026 (campaign/source data, product steps, free phrase check and the web server access log).
+Needs review by a lawyer (GDPR / KVKK, operator legal name and address, data-transfer wording)
+before it is treated as final. Keep EN and TR versions in sync.
+```
