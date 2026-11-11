@@ -66,6 +66,11 @@ export const PAGES = [
   { path: '/', en: 'index.html', tr: 'tr/index.html' },
   { path: '/how-we-measure/', en: 'how-we-measure/index.html', tr: 'tr/how-we-measure/index.html' },
   { path: '/trademark-check/', en: 'trademark-check/index.html', tr: 'tr/trademark-check/index.html' },
+  {
+    path: '/black-friday-trademark-checklist/',
+    en: 'black-friday-trademark-checklist/index.html',
+    tr: 'tr/black-friday-trademark-checklist/index.html',
+  },
 ]
 
 function toTurkish(html, path) {
