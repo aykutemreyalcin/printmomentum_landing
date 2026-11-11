@@ -20,7 +20,7 @@ for (const [lang, dict] of Object.entries({ en, tr })) {
 }
 
 const used = new Set()
-for (const page of ['index.html', 'how-we-measure/index.html', 'trademark-check/index.html', 'privacy.html', 'terms.html']) {
+for (const page of ['index.html', 'how-we-measure/index.html', 'trademark-check/index.html', 'black-friday-trademark-checklist/index.html', 'privacy.html', 'terms.html']) {
   const html = readFileSync(join(root, page), 'utf8')
   for (const m of html.matchAll(/data-i18n(?:-mark)?="([^"]+)"/g)) used.add(m[1])
   for (const m of html.matchAll(/data-i18n-attr="([^"]+)"/g)) {

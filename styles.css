@@ -1648,3 +1648,48 @@ html[data-theme="dark"] .shop-avatar {
 .legal-page .label-defs + p {
   margin-top: 14px;
 }
+
+/* Black Friday trademark checklist (/black-friday-trademark-checklist/) */
+
+.tm-table {
+  width: 100%;
+  margin: 8px 0 6px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.tm-table th,
+.tm-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--hair);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tm-table th {
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tm-table td:first-child {
+  width: 45%;
+  font-weight: 600;
+}
+
+.tm-instead {
+  margin-bottom: 18px;
+  color: var(--ink-2);
+}
+
+.tm-source {
+  margin-top: 24px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.legal-page ol.bf-steps {
+  margin: 8px 0 0;
+  padding-left: 22px;
+  list-style: decimal;
+}
